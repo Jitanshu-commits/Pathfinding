@@ -19,3 +19,6 @@ Enhance algorithm visualization with step-by-step details.
 Dependencies:
 Pygame: Install it using pip install pygame.
 Feel free to contribute, report issues, or suggest improvements! Happy pathfinding!
+
+PS: I made alot of similar programs/codes feel free to ping me for my previous codes(this is the most polished version of my code) 
+Thanks!
