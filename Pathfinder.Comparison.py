@@ -49,8 +49,8 @@ def reset():
 
 # Dijkstra's algorithm
 def dijkstra(start, end, obstacles):
-    heap = [(0, start, [])]
-    visited = set()
+    heap = [(0, start, [])]  # Priority queue for exploring cells
+    visited = set()          # Set to keep track of visited cells
 
     while heap:
         (cost, current, path) = heapq.heappop(heap)
@@ -74,26 +74,27 @@ def dijkstra(start, end, obstacles):
 
 # A* algorithm
 def astar(start, end, obstacles):
-    heap = [(0, start, [])]
-    visited = set()
+    heap = [(0, start, [])]   # Priority queue for exploring cells
+    visited = set()           # Set to keep track of visited cells
 
     while heap:
         (cost, current, path) = heapq.heappop(heap)
 
         if current in visited:
             continue
-
+        # Check if the current cell is not the start or end, and it's not an obstacle
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
             draw_cell(BLUE, current)
-
+        # Check if the current cell is the end point
         if current == end:
+            # Visualize the path with a yellow color
             visualize_path(path, YELLOW)
             return
-
+        # Explore neighbors
         for neighbor in neighbors(current):
-            if neighbor not in visited and neighbor not in obstacles:
-                heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))
+            if neighbor not in visited and neighbor not in obstacles:   # Check if the neighbor is not visited and is not an obstacle
+                heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))# Add the neighbor to the priority queue with an updated cost and path
 
         pygame.display.flip()
 
@@ -147,6 +148,7 @@ def main():
                         astar_end_time = pygame.time.get_ticks()
                         print(f"A* Algorithm Time: {astar_end_time - astar_start_time} ms")
                 elif event.key == pygame.K_c:
+                    # Reset the environment
                     start_set = False
                     end_set = False
                     start = START
@@ -156,11 +158,15 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
+                # Check if the starting point is not set
                 if not start_set:
+                    # Set the starting point
                     start = cell_pos
                     draw_cell(RED, start)
                     start_set = True
+                # Check if the ending point is not set and the current mouse position is different from the starting point
                 elif not end_set and cell_pos != start:
+                    # Set the ending point
                     end = cell_pos
                     draw_cell(RED, end)
                     end_set = True
