@@ -174,7 +174,14 @@ def main():
                     # Mark the cell as an obstacle
                     obstacles.add(cell_pos)
                     draw_cell(GRAY, cell_pos)
-
+            elif event.type == pygame.MOUSEMOTION and drawing_obstacle:
+                # If the mouse is moved while the obstacle button is held, add obstacles continuously
+                pos = pygame.mouse.get_pos()
+                cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
+                obstacles.add(cell_pos)
+                draw_cell(GRAY, cell_pos)
+            elif event.type == pygame.MOUSEBUTTONUP:
+                drawing_obstacle = False  
                 pygame.display.flip()
 
     pygame.quit()
