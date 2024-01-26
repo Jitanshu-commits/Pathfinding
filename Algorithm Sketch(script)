@@ -35,6 +35,7 @@ The main function is called if the script is executed directly.
 The script allows the user to set start and end points, mark cells as obstacles, and compare Dijkstra's and A* algorithms in finding the shortest path.
 
 Note: Make sure to have the Pygame library installed (pip install pygame) before running this script.
-
+PS: I plan on adding new algos and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
+(I want a new GUI pls help)
 
 
