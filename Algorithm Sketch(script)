@@ -1,0 +1,40 @@
+This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
+
+Constants and Colors:
+
+The script defines several constants representing colors and grid-related parameters.
+Pygame Initialization:
+
+Pygame is initialized, and the window is set up with the specified title.
+Grid Drawing Functions:
+
+draw_grid: Draws the grid lines on the screen.
+draw_cell: Draws a colored cell at a specific position.
+visualize_path: Animates the path with a delay.
+reset: Clears the screen, draws the grid, and updates the display.
+Pathfinding Algorithms:
+
+dijkstra: Implements Dijkstra's algorithm for pathfinding.
+astar: Implements the A* algorithm for pathfinding.
+heuristic: Computes the heuristic value for the A* algorithm.
+neighbors: Retrieves valid neighbors for a cell.
+Main Function (main):
+
+Initializes the screen and flags for start, end, and obstacles.
+Handles user input events:
+pygame.QUIT: Quits the program.
+pygame.KEYDOWN:
+pygame.K_SPACE: Runs Dijkstra's and A* algorithms simultaneously and prints their execution times.
+pygame.K_c: Resets the grid.
+pygame.MOUSEBUTTONDOWN: Sets the start and end points or marks cells as obstacles.
+pygame.MOUSEMOTION and pygame.MOUSEBUTTONUP: Allows continuous obstacle drawing while the mouse button is held.
+Calls the respective pathfinding algorithms based on user input.
+Script Execution:
+
+The main function is called if the script is executed directly.
+The script allows the user to set start and end points, mark cells as obstacles, and compare Dijkstra's and A* algorithms in finding the shortest path.
+
+Note: Make sure to have the Pygame library installed (pip install pygame) before running this script.
+
+
+
