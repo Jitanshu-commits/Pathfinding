@@ -141,3 +141,4 @@ Function main():
     Pygame.quit()
 
 If you want more detailed pseudocode for specific functions or sections, feel free to ask!
+PS: I plan on adding new algos and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
