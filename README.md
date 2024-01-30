@@ -1,5 +1,5 @@
 # Pathfinding
-Pathfinding Visualization with Dijkstra's and A* Algorithms
+Pathfinding Visualization with Dijkstra's and A* Algorithms (New add: DFS and BFS)
 This Python program provides a visual representation of Dijkstra's and A* pathfinding algorithms using the Pygame library. The application allows users to interactively set starting and ending points on a grid, draw obstacles, and visualize the process of finding the shortest path from the starting point to the endpoint while avoiding obstacles.
 
 Features:
@@ -19,6 +19,8 @@ Enhance algorithm visualization with step-by-step details.
 Dependencies:
 Pygame: Install it using pip install pygame.
 Feel free to contribute, report issues, or suggest improvements! Happy pathfinding!
+||Additions:
+#Added BFS (breadth first search) and DFS (depth first search) to the algorithm mix!
 
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
