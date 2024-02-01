@@ -1,35 +1,107 @@
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
 
-Constants and Colors:
+1. Import Statements
 
-The script defines several constants representing colors and grid-related parameters.
-Pygame Initialization:
+import random
+import pygame
+import heapq
+from collections import deque
+random: Module for generating pseudo-random numbers.
+pygame: Library for creating games and multimedia applications.
+heapq: Module for heap queue algorithm.
+deque: Double-ended queue implementation for efficiently adding and removing elements.
+2. Constants
 
-Pygame is initialized, and the window is set up with the specified title.
-Grid Drawing Functions:
+# Color Constants
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+GRAY = (128, 128, 128)
 
-draw_grid: Draws the grid lines on the screen.
-draw_cell: Draws a colored cell at a specific position.
-visualize_path: Animates the path with a delay.
-reset: Clears the screen, draws the grid, and updates the display.
-Pathfinding Algorithms:
+# Grid Constants
+GRID_SIZE = 20
+CELL_SIZE = 30
+SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
 
-dijkstra: Implements Dijkstra's algorithm for pathfinding.
-astar: Implements the A* algorithm for pathfinding.
-heuristic: Computes the heuristic value for the A* algorithm.
-neighbors: Retrieves valid neighbors for a cell.
-Main Function (main):
+# Start and End Points
+START = (0, 0)
+END = (GRID_SIZE - 1, GRID_SIZE - 1)
+Constants for colors and grid-related parameters.
+3. Pygame Initialization
 
-Initializes the screen and flags for start, end, and obstacles.
-Handles user input events:
-pygame.QUIT: Quits the program.
-pygame.KEYDOWN:
-pygame.K_SPACE: Runs Dijkstra's and A* algorithms simultaneously and prints their execution times.
-pygame.K_c: Resets the grid.
-pygame.MOUSEBUTTONDOWN: Sets the start and end points or marks cells as obstacles.
-pygame.MOUSEMOTION and pygame.MOUSEBUTTONUP: Allows continuous obstacle drawing while the mouse button is held.
-Calls the respective pathfinding algorithms based on user input.
-Script Execution:
+pygame.init()
+screen = pygame.display.set_mode(SCREEN_SIZE)
+pygame.display.set_caption("Pathfinding Visualization")
+Initializes the Pygame library, creates a window with the specified size, and sets the window caption.
+4. Drawing Functions
+python
+
+# Function to draw the grid
+def draw_grid():
+    # ...
+
+# Function to draw a colored cell at a specific position
+def draw_cell(color, position):
+    # ...
+
+# Function to visualize the path with a delay
+def visualize_path(path, color):
+    # ...
+
+# Reset the screen, draw the grid, and update the display
+def reset():
+    # ...
+5. Pathfinding Algorithms
+
+
+# Dijkstra's algorithm
+def dijkstra(start, end, obstacles):
+    # ...
+
+# A* algorithm
+def astar(start, end, obstacles):
+    # ...
+
+# DFS algorithm
+def dfs(start, end, obstacles):
+    # ...
+
+# BFS algorithm
+def bfs(start, end, obstacles):
+    # ...
+
+# Heuristic function for A*
+def heuristic(point, goal):
+    # ...
+
+# Function to get valid neighbors for a cell
+def neighbors(cell):
+    # ...
+6. Main Function
+python
+
+def main():
+    # ...
+
+if __name__ == "__main__":
+    main()
+The main function initializes the screen, handles user input, and runs various pathfinding algorithms based on the user's actions.
+7. User Interface and Input Handling
+The code responds to user input events (e.g., mouse clicks, key presses) to set start and end points, draw obstacles, and initiate pathfinding algorithms.
+8. Running Pathfinding Algorithms
+When the user presses the spacebar (pygame.K_SPACE), Dijkstra's, A*, DFS, and BFS algorithms are run simultaneously, and the time taken by each algorithm is printed.
+9. Pygame Event Loop
+The program enters a Pygame event loop (pygame.event.get()) to handle user input, update the display, and keep the application running until the user closes the window (pygame.QUIT event).
+10. Obstacle Drawing
+The code allows users to draw obstacles on the grid by clicking and dragging the mouse.
+11. Cleanup
+
+
+pygame.quit()
+Properly shuts down the Pygame library when the program exits.
 
 The main function is called if the script is executed directly.
 The script allows the user to set start and end points, mark cells as obstacles, and compare Dijkstra's and A* algorithms in finding the shortest path.
