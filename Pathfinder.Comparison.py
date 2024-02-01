@@ -1,3 +1,4 @@
+# Import Statements
 import random
 import pygame
 import heapq
@@ -27,6 +28,7 @@ pygame.display.set_caption("Pathfinding Visualization")
 
 # Function to draw the grid
 def draw_grid():
+    # Draws the grid lines on the Pygame window
     for x in range(0, SCREEN_SIZE[0], CELL_SIZE):
         pygame.draw.line(screen, WHITE, (x, 0), (x, SCREEN_SIZE[1]))
     for y in range(0, SCREEN_SIZE[1], CELL_SIZE):
@@ -34,10 +36,12 @@ def draw_grid():
 
 # Function to draw a colored cell at a specific position
 def draw_cell(color, position):
+    # Draws a colored cell on the Pygame window at the specified position
     pygame.draw.rect(screen, color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
 
 # Function to visualize the path with a delay
 def visualize_path(path, color):
+    # Visualizes the path on the Pygame window with a delay for better visualization
     for cell in path:
         draw_cell(color, cell)
         pygame.display.flip()
@@ -45,12 +49,14 @@ def visualize_path(path, color):
 
 # Reset the screen, draw the grid, and update the display
 def reset():
+    # Resets the Pygame window by filling it with black color and redrawing the grid
     screen.fill(BLACK)
     draw_grid()
     pygame.display.flip()
 
 # Dijkstra's algorithm
 def dijkstra(start, end, obstacles):
+    # Dijkstra's algorithm for finding the shortest path on a grid
     heap = [(0, start, [])]
     visited = set()
 
@@ -76,6 +82,7 @@ def dijkstra(start, end, obstacles):
 
 # A* algorithm
 def astar(start, end, obstacles):
+    # A* algorithm for finding the shortest path on a grid
     heap = [(0, start, [])]
     visited = set()
 
@@ -101,6 +108,7 @@ def astar(start, end, obstacles):
 
 # DFS algorithm
 def dfs(start, end, obstacles):
+    # Depth-First Search algorithm for finding a path on a grid
     stack = [(start, [])]
     visited = set()
 
@@ -129,6 +137,7 @@ def dfs(start, end, obstacles):
 
 # BFS algorithm
 def bfs(start, end, obstacles):
+    # Breadth-First Search algorithm for finding the shortest path on a grid
     queue = deque([(start, [])])
     visited = set()
 
@@ -154,10 +163,12 @@ def bfs(start, end, obstacles):
 
 # Heuristic function for A*
 def heuristic(point, goal):
+    # Heuristic function for A* algorithm. Computes the Manhattan distance.
     return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
 
 # Function to get valid neighbors for a cell
 def neighbors(cell):
+    # Returns valid neighbors for a given cell on the grid
     x, y = cell
     valid_neighbors = []
     if x > 0:
@@ -171,6 +182,7 @@ def neighbors(cell):
     return valid_neighbors
 
 def main():
+    # Main function to run the pathfinding visualization
     reset()
 
     running = True
