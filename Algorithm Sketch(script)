@@ -1,5 +1,5 @@
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
-
+(Additions- BFS ,DFS)
 1. Import Statements
 
 import random
