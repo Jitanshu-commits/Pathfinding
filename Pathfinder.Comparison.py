@@ -1,5 +1,7 @@
+import random
 import pygame
 import heapq
+from collections import deque
 
 # Constants
 WHITE = (255, 255, 255)
@@ -21,7 +23,7 @@ pygame.init()
 
 # Initialize Pygame window
 screen = pygame.display.set_mode(SCREEN_SIZE)
-pygame.display.set_caption("Dijkstra and A* Pathfinding Visualization")
+pygame.display.set_caption("Pathfinding Visualization")
 
 # Function to draw the grid
 def draw_grid():
@@ -39,7 +41,7 @@ def visualize_path(path, color):
     for cell in path:
         draw_cell(color, cell)
         pygame.display.flip()
-        pygame.time.wait(75)      #User can change wait time to 0 for the real comparison of time taken by each Algorithm.
+        pygame.time.wait(50)
 
 # Reset the screen, draw the grid, and update the display
 def reset():
@@ -49,8 +51,8 @@ def reset():
 
 # Dijkstra's algorithm
 def dijkstra(start, end, obstacles):
-    heap = [(0, start, [])]  # Priority queue for exploring cells
-    visited = set()          # Set to keep track of visited cells
+    heap = [(0, start, [])]
+    visited = set()
 
     while heap:
         (cost, current, path) = heapq.heappop(heap)
@@ -74,27 +76,79 @@ def dijkstra(start, end, obstacles):
 
 # A* algorithm
 def astar(start, end, obstacles):
-    heap = [(0, start, [])]   # Priority queue for exploring cells
-    visited = set()           # Set to keep track of visited cells
+    heap = [(0, start, [])]
+    visited = set()
 
     while heap:
         (cost, current, path) = heapq.heappop(heap)
 
         if current in visited:
             continue
-        # Check if the current cell is not the start or end, and it's not an obstacle
+
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
             draw_cell(BLUE, current)
-        # Check if the current cell is the end point
+
         if current == end:
-            # Visualize the path with a yellow color
             visualize_path(path, YELLOW)
             return
-        # Explore neighbors
+
         for neighbor in neighbors(current):
-            if neighbor not in visited and neighbor not in obstacles:   # Check if the neighbor is not visited and is not an obstacle
-                heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))# Add the neighbor to the priority queue with an updated cost and path
+            if neighbor not in visited and neighbor not in obstacles:
+                heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))
+
+        pygame.display.flip()
+
+# DFS algorithm
+def dfs(start, end, obstacles):
+    stack = [(start, [])]
+    visited = set()
+
+    while stack:
+        current, path = stack.pop()
+
+        if current in visited:
+            continue
+
+        visited.add(current)
+        if current not in (start, end) and current not in obstacles:
+            draw_cell(BLUE, current)
+
+        if current == end:
+            visualize_path(path, YELLOW)
+            return
+
+        neighbors_list = neighbors(current)
+        random.shuffle(neighbors_list)  # Randomize the order of neighbors for variety
+
+        for neighbor in neighbors_list:
+            if neighbor not in visited and neighbor not in obstacles:
+                stack.append((neighbor, path + [current]))
+
+        pygame.display.flip()
+
+# BFS algorithm
+def bfs(start, end, obstacles):
+    queue = deque([(start, [])])
+    visited = set()
+
+    while queue:
+        current, path = queue.popleft()
+
+        if current in visited:
+            continue
+
+        visited.add(current)
+        if current not in (start, end) and current not in obstacles:
+            draw_cell(BLUE, current)
+
+        if current == end:
+            visualize_path(path, YELLOW)
+            return
+
+        for neighbor in neighbors(current):
+            if neighbor not in visited and neighbor not in obstacles:
+                queue.append((neighbor, path + [current]))
 
         pygame.display.flip()
 
@@ -116,7 +170,6 @@ def neighbors(cell):
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
 
-# Main function
 def main():
     reset()
 
@@ -126,6 +179,7 @@ def main():
     start = START
     end = END
     obstacles = set()
+    drawing_obstacle = False
 
     while running:
         for event in pygame.event.get():
@@ -134,9 +188,11 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     if start_set and end_set:
-                        # Run Dijkstra's and A* simultaneously
+                        # Run Dijkstra's, A*, DFS, and BFS simultaneously
                         dijkstra_path = []
                         astar_path = []
+                        dfs_path = []
+                        bfs_path = []
 
                         dijkstra_start_time = pygame.time.get_ticks()
                         dijkstra(start, end, obstacles)
@@ -147,8 +203,18 @@ def main():
                         astar(start, end, obstacles)
                         astar_end_time = pygame.time.get_ticks()
                         print(f"A* Algorithm Time: {astar_end_time - astar_start_time} ms")
+
+                        dfs_start_time = pygame.time.get_ticks()
+                        dfs(start, end, obstacles)
+                        dfs_end_time = pygame.time.get_ticks()
+                        print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
+
+                        bfs_start_time = pygame.time.get_ticks()
+                        bfs(start, end, obstacles)
+                        bfs_end_time = pygame.time.get_ticks()
+                        print(f"BFS Algorithm Time: {bfs_end_time - bfs_start_time} ms")
+
                 elif event.key == pygame.K_c:
-                    # Reset the environment
                     start_set = False
                     end_set = False
                     start = START
@@ -158,15 +224,11 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
-                # Check if the starting point is not set
                 if not start_set:
-                    # Set the starting point
                     start = cell_pos
                     draw_cell(RED, start)
                     start_set = True
-                # Check if the ending point is not set and the current mouse position is different from the starting point
                 elif not end_set and cell_pos != start:
-                    # Set the ending point
                     end = cell_pos
                     draw_cell(RED, end)
                     end_set = True
@@ -174,6 +236,7 @@ def main():
                     # Mark the cell as an obstacle
                     obstacles.add(cell_pos)
                     draw_cell(GRAY, cell_pos)
+                    drawing_obstacle = True
             elif event.type == pygame.MOUSEMOTION and drawing_obstacle:
                 # If the mouse is moved while the obstacle button is held, add obstacles continuously
                 pos = pygame.mouse.get_pos()
@@ -181,8 +244,9 @@ def main():
                 obstacles.add(cell_pos)
                 draw_cell(GRAY, cell_pos)
             elif event.type == pygame.MOUSEBUTTONUP:
-                drawing_obstacle = False  
-                pygame.display.flip()
+                drawing_obstacle = False
+
+        pygame.display.flip()
 
     pygame.quit()
 
