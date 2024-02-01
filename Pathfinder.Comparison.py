@@ -45,7 +45,7 @@ def visualize_path(path, color):
     for cell in path:
         draw_cell(color, cell)
         pygame.display.flip()
-        pygame.time.wait(50)
+        pygame.time.wait(50)      #User can change wait time to 0 for the real comparison of time taken by each Algorithm.
 
 # Reset the screen, draw the grid, and update the display
 def reset():
