@@ -11,18 +11,16 @@ GRID_SIZE = 20
 CELL_SIZE = 30
 SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
 
-# Other constants and functions...
-
 # Initialize Pygame window
-screen = pygame.display.set_mode(SCREEN_SIZE)
-pygame.display.set_caption("Pathfinding Visualization")
+Create Pygame window with size SCREEN_SIZE
+Set window caption to "Pathfinding Visualization"
 
 # Function to draw the grid
-def draw_grid():
-    for x in range(0, SCREEN_SIZE[0], CELL_SIZE):
-        pygame.draw.line(screen, WHITE, (x, 0), (x, SCREEN_SIZE[1]))
-    for y in range(0, SCREEN_SIZE[1], CELL_SIZE):
-        pygame.draw.line(screen, WHITE, (0, y), (SCREEN_SIZE[0], y))
+Function draw_grid():
+    For x in range(0, SCREEN_SIZE[0], CELL_SIZE):
+        Draw a line on the window with color WHITE from (x, 0) to (x, SCREEN_SIZE[1])
+    For y in range(0, SCREEN_SIZE[1], CELL_SIZE):
+        Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
 # Function to draw a colored cell at a specific position
 def draw_cell(color, position):
