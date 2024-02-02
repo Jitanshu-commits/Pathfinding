@@ -44,104 +44,107 @@ Function dijkstra(start, end, obstacles):
     Create an empty priority queue heap with initial element (0, start, [])
     Create an empty set visited
 
-    while heap:
-        (cost, current, path) = heapq.heappop(heap)
+    While heap is not empty:
+        Pop the element with the smallest cost, current position, and path from heap
 
-        if current in visited:
-            continue
+        If current position is in visited:
+            Continue to the next iteration
 
-        visited.add(current)
-        if current not in (start, end) and current not in obstacles:
-            draw_cell(GREEN, current)
+        Add current position to visited
 
-        if current == end:
-            visualize_path(path, YELLOW)
-            return
+        If current position is not the start or end, and not an obstacle:
+            Draw the cell with color GREEN on the window
 
-        for neighbor in neighbors(current):
-            if neighbor not in visited and neighbor not in obstacles:
-                heapq.heappush(heap, (cost + 1, neighbor, path + [current]))
+        If current position is the end:
+            Call visualize_path with the current path and color YELLOW
+            Return from the function
 
-        pygame.display.flip()
+        For each neighbor in neighbors(current position):
+            If neighbor is not in visited and not an obstacle:
+                Push (cost + 1, neighbor, path + [current]) onto heap
+
+        Update the window display
 
 # A* algorithm
-def astar(start, end, obstacles):
-    heap = [(0, start, [])]
-    visited = set()
+Function astar(start, end, obstacles):
+    Create an empty priority queue heap with initial element (0, start, [])
+    Create an empty set visited
 
-    while heap:
-        (cost, current, path) = heapq.heappop(heap)
+    While heap is not empty:
+        Pop the element with the smallest cost, current position, and path from heap
 
-        if current in visited:
-            continue
+        If current position is in visited:
+            Continue to the next iteration
 
-        visited.add(current)
-        if current not in (start, end) and current not in obstacles:
-            draw_cell(BLUE, current)
+        Add current position to visited
 
-        if current == end:
-            visualize_path(path, YELLOW)
-            return
+        If current position is not the start or end, and not an obstacle:
+            Draw the cell with color BLUE on the window
 
-        for neighbor in neighbors(current):
-            if neighbor not in visited and neighbor not in obstacles:
-                heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))
+        If current position is the end:
+            Call visualize_path with the current path and color YELLOW
+            Return from the function
 
-        pygame.display.flip()
+        For each neighbor in neighbors(current position):
+            If neighbor is not in visited and not an obstacle:
+                Push (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]) onto heap
+
+        Update the window display
 
 # DFS algorithm
-def dfs(start, end, obstacles):
-    stack = [(start, [])]
-    visited = set()
+Function dfs(start, end, obstacles):
+    Create an empty stack with initial element (start, [])
+    Create an empty set visited
 
-    while stack:
-        current, path = stack.pop()
+    While stack is not empty:
+        Pop the element with current position and path from stack
 
-        if current in visited:
-            continue
+        If current position is in visited:
+            Continue to the next iteration
 
-        visited.add(current)
-        if current not in (start, end) and current not in obstacles:
-            draw_cell(BLUE, current)
+        Add current position to visited
 
-        if current == end:
-            visualize_path(path, YELLOW)
-            return
+        If current position is not the start or end, and not an obstacle:
+            Draw the cell with color BLUE on the window
 
-        neighbors_list = neighbors(current)
-        random.shuffle(neighbors_list)  # Randomize the order of neighbors for variety
+        If current position is the end:
+            Call visualize_path with the current path and color YELLOW
+            Return from the function
 
-        for neighbor in neighbors_list:
-            if neighbor not in visited and neighbor not in obstacles:
-                stack.append((neighbor, path + [current]))
+        Shuffle the list of neighbors of the current position
 
-        pygame.display.flip()
+        For each neighbor in the shuffled list:
+            If neighbor is not in visited and not an obstacle:
+                Push (neighbor, path + [current]) onto stack
+
+        Update the window display
 
 # BFS algorithm
-def bfs(start, end, obstacles):
-    queue = deque([(start, [])])
-    visited = set()
+Function bfs(start, end, obstacles):
+    Create an empty queue with initial element (start, [])
+    Create an empty set visited
 
-    while queue:
-        current, path = queue.popleft()
+    While queue is not empty:
+        Dequeue the element with current position and path from queue
 
-        if current in visited:
-            continue
+        If current position is in visited:
+            Continue to the next iteration
 
-        visited.add(current)
-        if current not in (start, end) and current not in obstacles:
-            draw_cell(BLUE, current)
+        Add current position to visited
 
-        if current == end:
-            visualize_path(path, YELLOW)
-            return
+        If current position is not the start or end, and not an obstacle:
+            Draw the cell with color BLUE on the window
 
-        for neighbor in neighbors(current):
-            if neighbor not in visited and neighbor not in obstacles:
-                queue.append((neighbor, path + [current]))
+        If current position is the end:
+            Call visualize_path with the current path and color YELLOW
+            Return from the function
 
-        pygame.display.flip()
+        For each neighbor in neighbors(current position):
+            If neighbor is not in visited and not an obstacle:
+                Enqueue (neighbor, path + [current]) onto queue
 
+        Update the window display
+ 
 # Heuristic function for A*
 def heuristic(point, goal):
     return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
