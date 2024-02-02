@@ -23,26 +23,26 @@ Function draw_grid():
         Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
 # Function to draw a colored cell at a specific position
-def draw_cell(color, position):
-    pygame.draw.rect(screen, color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+Function draw_cell(color, position):
+    Draw a rectangle on the window with specified color at position[0] * CELL_SIZE, position[1] * CELL_SIZE
 
 # Function to visualize the path with a delay
-def visualize_path(path, color):
-    for cell in path:
-        draw_cell(color, cell)
-        pygame.display.flip()
-        pygame.time.wait(50)
+Function visualize_path(path, color):
+    For each cell in path:
+        Draw the cell with the specified color on the window
+        Update the window display
+        Wait for 50 milliseconds
 
 # Reset the screen, draw the grid, and update the display
-def reset():
-    screen.fill(BLACK)
-    draw_grid()
-    pygame.display.flip()
+Function reset():
+    Fill the window with color BLACK
+    Call draw_grid()
+    Update the window display
 
 # Dijkstra's algorithm
-def dijkstra(start, end, obstacles):
-    heap = [(0, start, [])]
-    visited = set()
+Function dijkstra(start, end, obstacles):
+    Create an empty priority queue heap with initial element (0, start, [])
+    Create an empty set visited
 
     while heap:
         (cost, current, path) = heapq.heappop(heap)
