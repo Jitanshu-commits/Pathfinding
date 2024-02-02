@@ -157,13 +157,19 @@ def bfs(start, end, obstacles):
 
         for neighbor in neighbors(current):
             if neighbor not in visited and neighbor not in obstacles:
+                # Append neighboring cells to the queue for exploration
                 queue.append((neighbor, path + [current]))
 
         pygame.display.flip()
 
 # Heuristic function for A*
 def heuristic(point, goal):
-    # Heuristic function for A* algorithm. Computes the Manhattan distance.
+      """
+    Heuristic function for A* algorithm. Computes the Manhattan distance.
+    :param point: Current point.
+    :param goal: Goal point.
+    :return: Manhattan distance between the points.
+    """
     return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
 
 # Function to get valid neighbors for a cell
