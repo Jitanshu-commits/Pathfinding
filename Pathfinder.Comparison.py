@@ -1,8 +1,8 @@
 # Import Statements
-import random
-import pygame
-import heapq
-from collections import deque
+import random  # For shuffling neighbors in DFS
+import pygame  # For graphical visualization
+import heapq  # For priority queue implementation in Dijkstra's and A*
+from collections import deque  # For implementing the queue in BFS
 
 # Constants
 WHITE = (255, 255, 255)
