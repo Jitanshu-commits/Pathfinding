@@ -167,89 +167,83 @@ Function neighbors(cell):
     Return valid_neighbors
 
 # Main function
-def main():
-    reset()
+Function main():
+    Call reset()
 
-    running = True
-    start_set = False
-    end_set = False
-    start = START
-    end = END
-    obstacles = set()
-    drawing_obstacle = False
+    Set running to true
+    Set start_set to false
+    Set end_set to false
+    Set start to START
+    Set end to END
+    Create an empty set obstacles
+    Set drawing_obstacle to false
 
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    if start_set and end_set:
-                        # Run Dijkstra's, A*, DFS, and BFS simultaneously
-                        dijkstra_path = []
-                        astar_path = []
-                        dfs_path = []
-                        bfs_path = []
+    While running is true:
+        For each event in pygame.event.get():
+            If event type is QUIT:
+                Set running to false
+            Else if event type is KEYDOWN:
+                If event key is SPACE:
+                    If start_set is true and end_set is true:
+                        Create empty paths dijkstra_path, astar_path, dfs_path, bfs_path
 
-                        dijkstra_start_time = pygame.time.get_ticks()
-                        dijkstra(start, end, obstacles)
-                        dijkstra_end_time = pygame.time.get_ticks()
-                        print(f"Dijkstra's Algorithm Time: {dijkstra_end_time - dijkstra_start_time} ms")
+                        Record the start time for Dijkstra's algorithm
+                        Call dijkstra with start, end, and obstacles
+                        Record the end time for Dijkstra's algorithm
+                        Print "Dijkstra's Algorithm Time:", end time - start time, "ms"
 
-                        astar_start_time = pygame.time.get_ticks()
-                        astar(start, end, obstacles)
-                        astar_end_time = pygame.time.get_ticks()
-                        print(f"A* Algorithm Time: {astar_end_time - astar_start_time} ms")
+                        Record the start time for A* algorithm
+                        Call astar with start, end, and obstacles
+                        Record the end time for A* algorithm
+                        Print "A* Algorithm Time:", end time - start time, "ms"
 
-                        dfs_start_time = pygame.time.get_ticks()
-                        dfs(start, end, obstacles)
-                        dfs_end_time = pygame.time.get_ticks()
-                        print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
+                        Record the start time for DFS algorithm
+                        Call dfs with start, end, and obstacles
+                        Record the end time for DFS algorithm
+                        Print "DFS Algorithm Time:", end time - start time, "ms"
 
-                        bfs_start_time = pygame.time.get_ticks()
-                        bfs(start, end, obstacles)
-                        bfs_end_time = pygame.time.get_ticks()
-                        print(f"BFS Algorithm Time: {bfs_end_time - bfs_start_time} ms")
+                        Record the start time for BFS algorithm
+                        Call bfs with start, end, and obstacles
+                        Record the end time for BFS algorithm
+                        Print "BFS Algorithm Time:", end time - start time, "ms"
+                Else if event key is C:
+                    Set start_set to false
+                    Set end_set to false
+                    Set start to START
+                    Set end to END
+                    Create an empty set obstacles
+                    Call reset()
+            Else if event type is MOUSEBUTTONDOWN:
+                Set pos to pygame.mouse.get_pos()
+                Set cell_pos to (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
 
-                elif event.key == pygame.K_c:
-                    start_set = False
-                    end_set = False
-                    start = START
-                    end = END
-                    obstacles = set()
-                    reset()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
-                if not start_set:
-                    start = cell_pos
-                    draw_cell(RED, start)
-                    start_set = True
-                elif not end_set and cell_pos != start:
-                    end = cell_pos
-                    draw_cell(RED, end)
-                    end_set = True
-                else:
-                    # Mark the cell as an obstacle
-                    obstacles.add(cell_pos)
-                    draw_cell(GRAY, cell_pos)
-                    drawing_obstacle = True
-            elif event.type == pygame.MOUSEMOTION and drawing_obstacle:
-                # If the mouse is moved while the obstacle button is held, add obstacles continuously
-                pos = pygame.mouse.get_pos()
-                cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
-                obstacles.add(cell_pos)
-                draw_cell(GRAY, cell_pos)
-            elif event.type == pygame.MOUSEBUTTONUP:
-                drawing_obstacle = False
+                If start_set is false:
+                    Set start to cell_pos
+                    Call draw_cell with color RED and start
+                    Set start_set to true
+                Else if end_set is false and cell_pos is not equal to start:
+                    Set end to cell_pos
+                    Call draw_cell with color RED and end
+                    Set end_set to true
+                Else:
+                    Add cell_pos to obstacles
+                    Call draw_cell with color GRAY and cell_pos
+                    Set drawing_obstacle to true
+            Else if event type is MOUSEMOTION and drawing_obstacle is true:
+                Set pos to pygame.mouse.get_pos()
+                Set cell_pos to (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
+                Add cell_pos to obstacles
+                Call draw_cell with color GRAY and cell_pos
+            Else if event type is MOUSEBUTTONUP:
+                Set drawing_obstacle to false
 
-        pygame.display.flip()
+        Update the window display
 
-    pygame.quit()
+    Call pygame.quit()
 
 # Entry point
-if __name__ == "__main__":
-    main()
+If __name__ is equal to "__main__":
+    Call main()
 
 If you want more detailed pseudocode for specific functions or sections, feel free to ask!
 PS: I plan on adding new algorithms and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
