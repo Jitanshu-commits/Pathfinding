@@ -146,22 +146,25 @@ Function bfs(start, end, obstacles):
         Update the window display
  
 # Heuristic function for A*
-def heuristic(point, goal):
-    return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
+Function heuristic(point, goal):
+    Return the sum of absolute differences between point[0] and goal[0], and point[1] and goal[1]
 
 # Function to get valid neighbors for a cell
-def neighbors(cell):
-    x, y = cell
-    valid_neighbors = []
-    if x > 0:
-        valid_neighbors.append((x - 1, y))
-    if x < GRID_SIZE - 1:
-        valid_neighbors.append((x + 1, y))
-    if y > 0:
-        valid_neighbors.append((x, y - 1))
-    if y < GRID_SIZE - 1:
-        valid_neighbors.append((x, y + 1))
-    return valid_neighbors
+Function neighbors(cell):
+    Extract x and y from cell
+
+    Initialize an empty list valid_neighbors
+
+    If x > 0:
+        Append (x - 1, y) to valid_neighbors
+    If x < GRID_SIZE - 1:
+        Append (x + 1, y) to valid_neighbors
+    If y > 0:
+        Append (x, y - 1) to valid_neighbors
+    If y < GRID_SIZE - 1:
+        Append (x, y + 1) to valid_neighbors
+
+    Return valid_neighbors
 
 # Main function
 def main():
