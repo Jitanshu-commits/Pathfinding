@@ -33,7 +33,7 @@ BFS guarantees finding the shortest path in unweighted graphs, while DFS does no
 DFS and BFS can be implemented recursively or using data structures like stacks (for DFS) and queues (for BFS).
 The choice of algorithm depends on factors such as graph structure, presence of heuristics, computational resources, and desired optimality of the solution.
 
-**Capabilities:
+**Capabilities:**
 Each pathfinding algorithm has its own strengths depending on the specific characteristics of the graph and the requirements of the problem at hand:
 
 Dijkstra's Algorithm:
@@ -65,3 +65,29 @@ Suitable for scenarios where finding the shortest path is a primary concern, suc
 Can also be used for tasks beyond pathfinding, such as finding connected components in a graph.
 
 Each algorithm has its niche and can be advantageous in different scenarios.
+
+**Limitations:**
+While each pathfinding algorithm has its strengths, they also come with certain weaknesses and limitations:
+
+Dijkstra's Algorithm:
+
+Weaknesses:
+Inefficient for large graphs or graphs with many edges, as it explores all possible paths from the source node.
+Requires non-negative edge weights, as it assumes the shortest path between nodes based on cumulative edge weights.
+A Algorithm*:
+
+Weaknesses:
+Requires a good heuristic function to be effective. Inaccurate or poorly chosen heuristics can lead to suboptimal paths or even performance degradation.
+May not always find the optimal solution if the heuristic is not admissible (i.e., it overestimates the cost to reach the goal).
+Depth-First Search (DFS):
+
+Weaknesses:
+Does not guarantee finding the shortest path. It may traverse long paths and get stuck in infinite loops, particularly in graphs with cycles.
+Not suitable for finding the shortest path in weighted graphs, as it does not consider edge weights.
+Breadth-First Search (BFS):
+
+Weaknesses:
+Memory-intensive, especially for graphs with high branching factors or large depths, as it needs to store all nodes at each level.
+Inefficient for graphs with many edges or large distances between nodes, as it explores all nodes at each level before moving to the next level.
+ 
+Understanding these weaknesses is crucial for selecting the most appropriate algorithm for a given problem. 
