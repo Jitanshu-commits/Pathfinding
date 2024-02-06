@@ -33,3 +33,35 @@ BFS guarantees finding the shortest path in unweighted graphs, while DFS does no
 DFS and BFS can be implemented recursively or using data structures like stacks (for DFS) and queues (for BFS).
 The choice of algorithm depends on factors such as graph structure, presence of heuristics, computational resources, and desired optimality of the solution.
 
+**Capabilities:
+Each pathfinding algorithm has its own strengths depending on the specific characteristics of the graph and the requirements of the problem at hand:
+
+Dijkstra's Algorithm:
+
+Strengths:
+Finds the shortest path from a single source node to all other nodes in a weighted graph.
+Guarantees optimality when all edge weights are non-negative.
+Suitable for finding shortest paths in scenarios where all possible paths need to be considered.
+A Algorithm*:
+
+Strengths:
+More efficient than Dijkstra's algorithm when a good heuristic is available.
+Utilizes heuristic information to guide the search process, allowing it to focus on the most promising paths.
+Can be tailored to specific problem domains by choosing appropriate heuristic functions.
+Effective in situations where computational resources are limited and finding the optimal path quickly is essential.
+Depth-First Search (DFS):
+
+Strengths:
+Simple to implement and understand.
+Memory efficient, as it explores as far as possible along each branch before backtracking.
+Suitable for tasks where any path from the start node to the goal node is acceptable, rather than necessarily the shortest path.
+Can be used for graph traversal and various other applications beyond pathfinding.
+Breadth-First Search (BFS):
+
+Strengths:
+Guarantees finding the shortest path in unweighted graphs.
+Explores nodes in order of their distance from the start node, ensuring optimality in terms of path length.
+Suitable for scenarios where finding the shortest path is a primary concern, such as in maze-solving or network routing problems.
+Can also be used for tasks beyond pathfinding, such as finding connected components in a graph.
+
+Each algorithm has its niche and can be advantageous in different scenarios.
