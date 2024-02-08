@@ -21,6 +21,7 @@ Pygame: Install it using pip install pygame.
 Feel free to contribute, report issues, or suggest improvements! Happy pathfinding!
 ||Additions:
 #Added BFS (breadth first search) and DFS (depth first search) to the algorithm mix!
+#Added Algorithm selection
 
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
