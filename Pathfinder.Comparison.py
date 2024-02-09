@@ -3,8 +3,8 @@ import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
 from collections import deque  # For implementing the queue in BFS
-import tkinter as tk
-from tkinter import messagebox
+import tkinter as tk  # For creating GUI for algorithm selection
+from tkinter import messagebox  # For displaying message boxes in tkinter GUI
 
 # Constants for algorithm selection
 ASTAR = 1
@@ -201,16 +201,15 @@ def create_menu():
 
     def select_algorithm(algorithm):
         root.destroy()  # Close the menu
-        run_algorithm(algorithm)
-
+        run_algorithm(algorithm) # Run the selected algorithm
+    # Add labels and buttons for each algorithm option
     tk.Label(root, text="Select Algorithm:").pack()
-
     tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
     tk.Button(root, text="Dijkstra's", command=lambda: select_algorithm(DIJKSTRA)).pack()
     tk.Button(root, text="BFS", command=lambda: select_algorithm(BFS)).pack()
     tk.Button(root, text="DFS", command=lambda: select_algorithm(DFS)).pack()
 
-    root.mainloop()
+    root.mainloop() # Start the tkinter event loop
 
 def run_algorithm(selected_algorithm):
     reset()
