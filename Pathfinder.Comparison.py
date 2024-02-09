@@ -288,5 +288,8 @@ def run_algorithm(selected_algorithm):
 
     pygame.quit()
 
+def main():
+    create_menu()
+
 if __name__ == "__main__":
     main()
