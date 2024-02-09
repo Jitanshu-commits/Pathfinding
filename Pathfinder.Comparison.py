@@ -3,6 +3,14 @@ import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
 from collections import deque  # For implementing the queue in BFS
+import tkinter as tk
+from tkinter import messagebox
+
+# Constants for algorithm selection
+ASTAR = 1
+DIJKSTRA = 2
+BFS = 3
+DFS = 4
 
 # Constants
 WHITE = (255, 255, 255)
@@ -187,8 +195,24 @@ def neighbors(cell):
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
 
-def main():
-    # Main function to run the pathfinding visualization
+def create_menu():
+    root = tk.Tk()
+    root.title("Algorithm Selection")
+
+    def select_algorithm(algorithm):
+        root.destroy()  # Close the menu
+        run_algorithm(algorithm)
+
+    tk.Label(root, text="Select Algorithm:").pack()
+
+    tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
+    tk.Button(root, text="Dijkstra's", command=lambda: select_algorithm(DIJKSTRA)).pack()
+    tk.Button(root, text="BFS", command=lambda: select_algorithm(BFS)).pack()
+    tk.Button(root, text="DFS", command=lambda: select_algorithm(DFS)).pack()
+
+    root.mainloop()
+
+def run_algorithm(selected_algorithm):
     reset()
 
     running = True
@@ -205,33 +229,27 @@ def main():
                 running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    if start_set and end_set:
-                        # Run Dijkstra's, A*, DFS, and BFS simultaneously
-                        dijkstra_path = []
-                        astar_path = []
-                        dfs_path = []
-                        bfs_path = []
-
-                        dijkstra_start_time = pygame.time.get_ticks()
-                        dijkstra(start, end, obstacles)
-                        dijkstra_end_time = pygame.time.get_ticks()
-                        print(f"Dijkstra's Algorithm Time: {dijkstra_end_time - dijkstra_start_time} ms")
-
-                        astar_start_time = pygame.time.get_ticks()
-                        astar(start, end, obstacles)
-                        astar_end_time = pygame.time.get_ticks()
-                        print(f"A* Algorithm Time: {astar_end_time - astar_start_time} ms")
-
-                        dfs_start_time = pygame.time.get_ticks()
-                        dfs(start, end, obstacles)
-                        dfs_end_time = pygame.time.get_ticks()
-                        print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
-
-                        bfs_start_time = pygame.time.get_ticks()
-                        bfs(start, end, obstacles)
-                        bfs_end_time = pygame.time.get_ticks()
-                        print(f"BFS Algorithm Time: {bfs_end_time - bfs_start_time} ms")
-
+                    if start_set and end_set and selected_algorithm is not None:
+                        if selected_algorithm == DIJKSTRA:
+                            dijkstra_start_time = pygame.time.get_ticks()
+                            dijkstra(start, end, obstacles)
+                            dijkstra_end_time = pygame.time.get_ticks()
+                            print(f"Dijkstra's Algorithm Time: {dijkstra_end_time - dijkstra_start_time} ms")
+                        elif selected_algorithm == ASTAR:
+                            astar_start_time = pygame.time.get_ticks()
+                            astar(start, end, obstacles)
+                            astar_end_time = pygame.time.get_ticks()
+                            print(f"A* Algorithm Time: {astar_end_time - astar_start_time} ms")
+                        elif selected_algorithm == BFS:
+                            bfs_start_time = pygame.time.get_ticks()
+                            bfs(start, end, obstacles)
+                            bfs_end_time = pygame.time.get_ticks()
+                            print(f"BFS Algorithm Time: {bfs_end_time - bfs_start_time} ms")
+                        elif selected_algorithm == DFS:
+                            dfs_start_time = pygame.time.get_ticks()
+                            dfs(start, end, obstacles)
+                            dfs_end_time = pygame.time.get_ticks()
+                            print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
                 elif event.key == pygame.K_c:
                     start_set = False
                     end_set = False
@@ -239,6 +257,8 @@ def main():
                     end = END
                     obstacles = set()
                     reset()
+                elif event.key == pygame.K_ESCAPE:
+                    create_menu()  # Show the algorithm selection menu
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
