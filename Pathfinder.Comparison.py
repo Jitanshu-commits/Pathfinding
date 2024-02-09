@@ -259,14 +259,15 @@ def run_algorithm(selected_algorithm):
                     reset()
                 elif event.key == pygame.K_ESCAPE:
                     create_menu()  # Show the algorithm selection menu
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+                    
+            elif event.type == pygame.MOUSEBUTTONDOWN: # Handle mouse button down events              
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
-                if not start_set:
+                if not start_set:   # If start is not set, set start position
                     start = cell_pos
                     draw_cell(RED, start)
                     start_set = True
-                elif not end_set and cell_pos != start:
+                elif not end_set and cell_pos != start: # If end is not set and the clicked position is not the same as start, set end position
                     end = cell_pos
                     draw_cell(RED, end)
                     end_set = True
