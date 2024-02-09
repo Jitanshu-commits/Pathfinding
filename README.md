@@ -3,7 +3,7 @@ Pathfinding Visualization with Dijkstra's and A* Algorithms (New add: DFS and BF
 This Python program provides a visual representation of Dijkstra's and A* pathfinding algorithms using the Pygame library. The application allows users to interactively set starting and ending points on a grid, draw obstacles, and visualize the process of finding the shortest path from the starting point to the endpoint while avoiding obstacles.
 
 # Features: 
-Simultaneous Pathfinding: Run Dijkstra's and A* algorithms simultaneously to compare their performance.
+Simultaneous Pathfinding: Run Dijkstra's and A* algorithms(Added DFS and BFS) simultaneously to compare their performance.
 User Interaction: Set the starting and ending points by clicking on cells. Draw obstacles by holding the left mouse button. 
 Algorithm Visualization: See the algorithms in action with real-time visualization. Observe the exploration of cells and the final pathfinding result.
 Execution Timing: Measure and display the execution time of Dijkstra's and A* algorithms.
