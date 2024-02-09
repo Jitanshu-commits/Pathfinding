@@ -223,7 +223,7 @@ def run_algorithm(selected_algorithm):
     obstacles = set()
     drawing_obstacle = False
 
-    while running:
+    while running: # Inside the pygame event handling loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -250,7 +250,7 @@ def run_algorithm(selected_algorithm):
                             dfs(start, end, obstacles)
                             dfs_end_time = pygame.time.get_ticks()
                             print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
-                elif event.key == pygame.K_c:
+                elif event.key == pygame.K_c:  # If C key is pressed, clear the grid and reset
                     start_set = False
                     end_set = False
                     start = START
@@ -282,7 +282,7 @@ def run_algorithm(selected_algorithm):
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
                 obstacles.add(cell_pos)
                 draw_cell(GRAY, cell_pos)
-            elif event.type == pygame.MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP: # Handle mouse button up events, stop drawing obstacles
                 drawing_obstacle = False
 
         pygame.display.flip()
