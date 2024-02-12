@@ -225,11 +225,11 @@ def run_algorithm(selected_algorithm):
     while running: # Inside the pygame event handling loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                running = False # Exit the loop and close the program if the user quits
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:  # Run the selected algorithm when the space key is presse
                     if start_set and end_set and selected_algorithm is not None:
-                        if selected_algorithm == DIJKSTRA:
+                        if selected_algorithm == DIJKSTRA:                      # Measure the time taken by Dijkstra's algorithm and print it
                             dijkstra_start_time = pygame.time.get_ticks()
                             dijkstra(start, end, obstacles)
                             dijkstra_end_time = pygame.time.get_ticks()
