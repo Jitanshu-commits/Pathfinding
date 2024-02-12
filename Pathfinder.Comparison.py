@@ -69,22 +69,22 @@ def dijkstra(start, end, obstacles):
     visited = set()
 
     while heap:
-        (cost, current, path) = heapq.heappop(heap)
+        (cost, current, path) = heapq.heappop(heap)     # Pop the minimum cost node from the heap
 
         if current in visited:
-            continue
-
-        visited.add(current)
+            continue                       # Skip this node if already visited
+ 
+        visited.add(current)               # Mark the current node as visited
         if current not in (start, end) and current not in obstacles:
-            draw_cell(GREEN, current)
+            draw_cell(GREEN, current)      # Draw the cell if it's not the start or end
 
         if current == end:
             visualize_path(path, YELLOW)
             return
 
-        for neighbor in neighbors(current):
+        for neighbor in neighbors(current):                                       # Expand the current node by considering its neighbors
             if neighbor not in visited and neighbor not in obstacles:
-                heapq.heappush(heap, (cost + 1, neighbor, path + [current]))
+                heapq.heappush(heap, (cost + 1, neighbor, path + [current]))      # Add the neighbor to the heap with updated cost and path
 
         pygame.display.flip()
 
