@@ -194,7 +194,14 @@ def neighbors(cell):
     if y < GRID_SIZE - 1:
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
-
+    
+def remove_obstacle(cell, obstacles):
+    if cell in obstacles:
+        obstacles.remove(cell)
+        draw_cell(BLACK, cell)
+        draw_grid() 
+        pygame.display.flip() 
+        
 def create_menu():
     root = tk.Tk()
     root.title("Algorithm Selection")
@@ -228,7 +235,7 @@ def run_algorithm(selected_algorithm):
                 running = False # Exit the loop and close the program if the user quits
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:  # Run the selected algorithm when the space key is presse
-                    if start_set and end_set and selected_algorithm is not None:
+                    if start_set and end_set:
                         if selected_algorithm == DIJKSTRA:                      # Measure the time taken by Dijkstra's algorithm and print it
                             dijkstra_start_time = pygame.time.get_ticks()
                             dijkstra(start, end, obstacles)
