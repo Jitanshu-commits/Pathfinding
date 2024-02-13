@@ -7,10 +7,14 @@ Simultaneous Pathfinding: Run Dijkstra's and A* algorithms(Added DFS and BFS) si
 User Interaction: Set the starting and ending points by clicking on cells. Draw obstacles by holding the left mouse button. 
 Algorithm Visualization: See the algorithms in action with real-time visualization. Observe the exploration of cells and the final pathfinding result.
 Execution Timing: Measure and display the execution time of Dijkstra's and A* algorithms.
-How to Use:
+# How to Use:
 Run the program and interact with the grid using the mouse.
-Set the starting and ending points, draw obstacles, and press the space bar to execute Dijkstra's and A* algorithms.
+Set the starting and ending points, draw obstacles, and press the space bar to execute Dijkstra's and A* algorithms (Additions DFS and BFS).
 Press 'c' to clear the grid and reset points.
+'ESC' button opens the algorithm selection menu.
+# Instructions(Commands)
+Left click adds obstacles.
+Right click removes obstacles.
 # To-Do:
 Improve user interface for better clarity and guidance.
 Implement more pathfinding algorithms for comparison.
