@@ -282,6 +282,8 @@ def run_algorithm(selected_algorithm):
                     obstacles.add(cell_pos)
                     draw_cell(GRAY, cell_pos)
                     drawing_obstacle = True
+                elif pygame.mouse.get_pressed()[2]:  # Right mouse button
+                    remove_obstacle(cell_pos, obstacles)    
             elif event.type == pygame.MOUSEMOTION and drawing_obstacle:
                 # If the mouse is moved while the obstacle button is held, add obstacles continuously
                 pos = pygame.mouse.get_pos()
