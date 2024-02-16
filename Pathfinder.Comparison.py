@@ -228,14 +228,14 @@ def run_algorithm(selected_algorithm):
     obstacles = set()
     drawing_obstacle = False
 
-    while running:
+    while running: # Inside the pygame event handling loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                running = False # Exit the loop and close the program if the user quits
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE: # Run the selected algorithm when the space key is pressed
                     if start_set and end_set:
-                        if selected_algorithm == DIJKSTRA:                     
+                        if selected_algorithm == DIJKSTRA:    # Measure the time taken by Dijkstra's algorithm and print it                  
                             dijkstra_start_time = pygame.time.get_ticks()
                             dijkstra(start, end, obstacles)
                             dijkstra_end_time = pygame.time.get_ticks()
@@ -255,7 +255,7 @@ def run_algorithm(selected_algorithm):
                             dfs(start, end, obstacles)
                             dfs_end_time = pygame.time.get_ticks()
                             print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
-                elif event.key == pygame.K_c:
+                elif event.key == pygame.K_c:   # If C key is pressed, clear the grid and reset
                     start_set = False
                     end_set = False
                     start = START
@@ -265,15 +265,15 @@ def run_algorithm(selected_algorithm):
                 elif event.key == pygame.K_ESCAPE:
                     create_menu()  # Show the algorithm selection menu    
                     
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN:   # Handle mouse button down events   
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
                 if pygame.mouse.get_pressed()[0]:  # Left mouse button
-                    if not start_set:
+                    if not start_set:  # If start is not set, set start position
                         start = cell_pos
                         draw_cell(RED, start)
                         start_set = True
-                    elif not end_set and cell_pos != start:
+                    elif not end_set and cell_pos != start:  # If end is not set and the clicked position is not the same as start, set end position
                         end = cell_pos
                         draw_cell(RED, end)
                         end_set = True
@@ -290,7 +290,7 @@ def run_algorithm(selected_algorithm):
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
                 obstacles.add(cell_pos)
                 draw_cell(GRAY, cell_pos)
-            elif event.type == pygame.MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:  # Handle mouse button up events, stop drawing obstacles
                 drawing_obstacle = False
 
         pygame.display.flip()
