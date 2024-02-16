@@ -171,15 +171,13 @@ def bfs(start, end, obstacles):
         pygame.display.flip()
 
 # Heuristic function for A*
-def heuristic(point, goal):
-      """
+def heuristic(point, goal):   
+    return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
+   """
     Heuristic function for A* algorithm. Computes the Manhattan distance.
     :param point: Current point.
     :param goal: Goal point.
-    :return: Manhattan distance between the points.
-    """
-    return abs(point[0] - goal[0]) + abs(point[1] - goal[1])
-
+    :return: Manhattan distance between the points.  """
 # Function to get valid neighbors for a cell
 def neighbors(cell):
     # Returns valid neighbors for a given cell on the grid
