@@ -1,4 +1,18 @@
-# Constants                                                                                    #Updates Pending.
+# Import necessary libraries                                                                 #Updates Pending.
+import random  # Import the random module for shuffling neighbors in DFS
+import pygame  # Import the pygame library for graphical visualization
+import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
+from collections import deque  # Import deque from collections for implementing the queue in BFS
+import tkinter as tk  # Import tkinter as tk for creating GUI for algorithm selection
+from tkinter import messagebox  # Import messagebox from tkinter for displaying message boxes in tkinter GUI
+
+# Constants for algorithm selection
+ASTAR = 1
+DIJKSTRA = 2
+BFS = 3
+DFS = 4
+
+# Constants                                                                                    
 WHITE = (255, 255, 255)  # RGB values for white color
 BLACK = (0, 0, 0)  # RGB values for black color
 RED = (255, 0, 0)  # RGB values for red color
