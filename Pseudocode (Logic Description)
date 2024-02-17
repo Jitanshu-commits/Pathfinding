@@ -31,9 +31,11 @@ Set window caption to "Pathfinding Visualization"
 
 # Function to draw the grid
 Function draw_grid():
-    For x in range(0, SCREEN_SIZE[0], CELL_SIZE):
+   # Loop to draw horizontal grid lines
+    For each x-coordinate from 0 to SCREEN_SIZE[0] with step CELL_SIZE:
         Draw a line on the window with color WHITE from (x, 0) to (x, SCREEN_SIZE[1])
-    For y in range(0, SCREEN_SIZE[1], CELL_SIZE):
+   # Loop to draw vertical grid lines
+    For each y-coordinate from 0 to SCREEN_SIZE[1] with step CELL_SIZE:
         Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
 # Function to draw a colored cell at a specific position
