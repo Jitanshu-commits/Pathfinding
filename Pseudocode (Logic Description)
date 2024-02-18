@@ -182,6 +182,14 @@ Function neighbors(cell):
 
     Return valid_neighbors
 
+# Function to remove an obstacle from the grid
+Function remove_obstacle(cell, obstacles):
+    If cell is in obstacles:
+        Remove cell from obstacles
+        Call draw_cell with color BLACK and cell
+        Call draw_grid()
+        Update the window display
+
 # Main function
 Function main():
     Call reset()
