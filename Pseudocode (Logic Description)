@@ -190,6 +190,23 @@ Function remove_obstacle(cell, obstacles):
         Call draw_grid()
         Update the window display
 
+# Function to create GUI menu for algorithm selection
+Function create_menu():
+    Create a tkinter window
+    Set the title of the window to "Algorithm Selection"
+
+    Define a function to select an algorithm:
+        Close the menu window
+        Run the selected algorithm
+
+    Add labels and buttons for each algorithm option:
+        Button for A* algorithm
+        Button for Dijkstra's algorithm
+        Button for BFS algorithm
+        Button for DFS algorithm
+
+    Start the tkinter event loop
+
 # Main function
 Function main():
     Call reset()
