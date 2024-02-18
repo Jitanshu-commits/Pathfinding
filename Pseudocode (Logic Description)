@@ -208,7 +208,7 @@ Function create_menu():
     Start the tkinter event loop
 
 # Main function
-Function main():
+Function run_algorithm(selected_algorithm):
     Call reset()
 
     Set running to true
@@ -281,6 +281,9 @@ Function main():
         Update the window display
 
     Call pygame.quit()
+
+Function main():
+    Show algorithm selection menu
 
 # Entry point
 If __name__ is equal to "__main__":
