@@ -20,6 +20,7 @@ Improve user interface for better clarity and guidance.
 Implement more pathfinding algorithms for comparison.
 Allow customization of grid size and cell size.
 Enhance algorithm visualization with step-by-step details.
+Add obstacle generation (maze) 
 # Dependencies:
 Pygame: Install it using pip install pygame.
 Feel free to contribute, report issues, or suggest improvements! Happy pathfinding!
