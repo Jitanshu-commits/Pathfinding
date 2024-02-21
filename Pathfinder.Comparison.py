@@ -69,10 +69,11 @@ def dijkstra(start, end, obstacles):
     visited = set()
 
     while heap:
+    
         (cost, current, path) = heapq.heappop(heap)     # Pop the minimum cost node from the heap
 
         if current in visited:
-            continue                       # Skip this node if already visited
+            continue                       # Skip this node if already visited 
  
         visited.add(current)               # Mark the current node as visited
         if current not in (start, end) and current not in obstacles:
@@ -87,6 +88,8 @@ def dijkstra(start, end, obstacles):
                 heapq.heappush(heap, (cost + 1, neighbor, path + [current]))      # Add the neighbor to the heap with updated cost and path
 
         pygame.display.flip()
+    # If the loop completes without finding the end node, display a message
+    messagebox.showinfo("Dijkstra's", "End node not reachable!")    
 
 # A* algorithm
 def astar(start, end, obstacles):
@@ -113,7 +116,10 @@ def astar(start, end, obstacles):
                 heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))
 
         pygame.display.flip()
-
+        
+    # If the loop completes without finding the end node, display a message
+    messagebox.showinfo("A*", "End node not reachable!")
+    
 # DFS algorithm
 def dfs(start, end, obstacles):
     # Depth-First Search algorithm for finding a path on a grid
@@ -142,7 +148,10 @@ def dfs(start, end, obstacles):
                 stack.append((neighbor, path + [current]))
 
         pygame.display.flip()
-
+        
+    # If the loop completes without finding the end node, display a message
+    messagebox.showinfo("DFS", "End node not reachable!")
+    
 # BFS algorithm
 def bfs(start, end, obstacles):
     # Breadth-First Search algorithm for finding the shortest path on a grid
@@ -169,6 +178,9 @@ def bfs(start, end, obstacles):
                 queue.append((neighbor, path + [current]))
 
         pygame.display.flip()
+
+     # If the loop completes without finding the end node, display a message
+    messagebox.showinfo("BFS", "End node not reachable!")
 
 # Heuristic function for A*
 def heuristic(point, goal):     
