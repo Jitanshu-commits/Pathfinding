@@ -80,6 +80,8 @@ Function dijkstra(start, end, obstacles):
                 Push (cost + 1, neighbor, path + [current]) onto heap
 
         Update the window display
+     # If the loop completes without finding the end node, display a message
+    messagebox to show info("Dijkstra", "End node not reachable!")    
 
 # A* algorithm
 Function astar(start, end, obstacles):
@@ -106,6 +108,8 @@ Function astar(start, end, obstacles):
                 Push (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]) onto heap
 
         Update the window display
+      # If the loop completes without finding the end node, display a message
+   messagebox to show info("A*", "End node not reachable!")
 
 # DFS algorithm
 Function dfs(start, end, obstacles):
@@ -134,6 +138,8 @@ Function dfs(start, end, obstacles):
                 Push (neighbor, path + [current]) onto stack
 
         Update the window display
+      # If the loop completes without finding the end node, display a message
+    messagebox to show info("DFS", "End node not reachable!")
 
 # BFS algorithm
 Function bfs(start, end, obstacles):
@@ -160,7 +166,10 @@ Function bfs(start, end, obstacles):
                 Enqueue (neighbor, path + [current]) onto queue
 
         Update the window display
- 
+
+     # If the loop completes without finding the end node, display a message
+    messagebox to show info("BFS", "End node not reachable!")
+
 # Heuristic function for A*
 Function heuristic(point, goal):
     Return the sum of absolute differences between point[0] and goal[0], and point[1] and goal[1]
