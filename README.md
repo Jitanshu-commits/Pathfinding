@@ -27,7 +27,7 @@ Feel free to contribute, report issues, or suggest improvements! Happy pathfindi
 # ||Additions:
 #Added BFS (breadth first search) and DFS (depth first search) to the algorithm mix!
 #Added Algorithm selection
-
+#Added random obstacle (maze) generation.
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
 Limitations: This project uses grid based map tile for pathfinding algorithms to work on which may or may not limit the algorithm's capabilities.(I may change the map tile versions in the future)
