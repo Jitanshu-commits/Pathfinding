@@ -12,6 +12,7 @@ Run the program and interact with the grid using the mouse.
 Set the starting and ending points, draw obstacles, and press the space bar to execute Dijkstra's and A* algorithms (Additions DFS and BFS).
 Press 'c' to clear the grid and reset points.
 'ESC' button opens the algorithm selection menu.
+A check box has been added for 'maze' generation, checking it auto creates obstacles for the tile map.
 # Instructions(Commands)
 Left click adds obstacles.
 Right click removes obstacles.
