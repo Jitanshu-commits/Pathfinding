@@ -1,3 +1,6 @@
+#Taking major hits in algorithm performance, turns out adding more functions to algorithms slows the visiting process of cells (overall taking longer to find a path),
+turning the algorithms to classes may help me reduce loops (make it efficient). I might do that to compare performance in future updates .
+
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
 (Additions- BFS ,DFS)
 1. Import Statements
