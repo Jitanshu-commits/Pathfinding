@@ -228,6 +228,10 @@ def create_menu():
     root = tk.Tk()
     root.title("Algorithm Selection")
 
+    maze_var = tk.IntVar()
+    maze_checkbox = tk.Checkbutton(root, text="Maze", variable=maze_var)
+    maze_checkbox.pack()
+
     def select_algorithm(algorithm):
         root.destroy()  # Close the menu
         run_algorithm(algorithm) # Run the selected algorithm
