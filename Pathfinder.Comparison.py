@@ -206,12 +206,13 @@ def neighbors(cell):
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
     
+#Obstacle removal function    
 def remove_obstacle(cell, obstacles):
     if cell in obstacles:
-        obstacles.remove(cell)
-        draw_cell(BLACK, cell)
-        draw_grid() 
-        pygame.display.flip() 
+        obstacles.remove(cell) #removes the obstacle
+        draw_cell(BLACK, cell) #for filling the removed obstacle's color
+        draw_grid()            #for grid line
+        pygame.display.flip()  #update the window
 
 # Function to generate a random maze with obstacles
 def generate_random_maze(obstacles):
@@ -252,7 +253,7 @@ def run_algorithm(selected_algorithm, create_maze):
 
     if create_maze:
         generate_random_maze(obstacles)  # Generate maze before setting start and end points
-
+#Main(engine) code
     running = True
     start_set = False
     end_set = False
