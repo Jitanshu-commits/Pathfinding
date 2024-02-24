@@ -336,3 +336,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#warning I will change the license sooner or later in the near future
