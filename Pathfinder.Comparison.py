@@ -1,4 +1,4 @@
-# Import Statements                                                        Updates Pending        
+# Import Statements                                                             
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -240,8 +240,14 @@ def create_menu():
 
     root.mainloop() # Start the tkinter event loop
 
-def run_algorithm(selected_algorithm):
+# Function to run the selected algorithm
+def run_algorithm(selected_algorithm, create_maze):
     reset()
+
+    obstacles = set()
+
+    if create_maze:
+        generate_random_maze(obstacles)  # Generate maze before setting start and end points
 
     running = True
     start_set = False
