@@ -1,3 +1,6 @@
+<img width="697" alt="Pathfinder" src="https://github.com/Jitanshu-commits/Pathfinding/assets/146759344/df24c6b2-3437-4ba6-8980-3df89494cf16"> Demo  
+
+
 ## Pathfinding
 Pathfinding Visualization with Dijkstra's and A* Algorithms (New add: DFS and BFS)
 This Python program provides a visual representation of Dijkstra's and A* pathfinding algorithms using the Pygame library. The application allows users to interactively set starting and ending points on a grid, draw obstacles, and visualize the process of finding the shortest path from the starting point to the endpoint while avoiding obstacles.
