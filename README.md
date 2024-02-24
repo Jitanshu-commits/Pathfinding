@@ -1,4 +1,7 @@
-<img width="697" alt="Pathfinder" src="https://github.com/Jitanshu-commits/Pathfinding/assets/146759344/df24c6b2-3437-4ba6-8980-3df89494cf16"> Demo  
+  <img width="980" alt="Pathfinder" src="https://github.com/Jitanshu-commits/Pathfinding/assets/146759344/df24c6b2-3437-4ba6-8980-3df89494cf16">
+                                                            
+                                                                  
+                                                                   Demo  
 
 
 ## Pathfinding
