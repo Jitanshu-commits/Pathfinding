@@ -212,7 +212,18 @@ def remove_obstacle(cell, obstacles):
         draw_cell(BLACK, cell)
         draw_grid() 
         pygame.display.flip() 
-        
+
+# Function to generate a random maze with obstacles
+def generate_random_maze(obstacles):
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
+            if random.random() < 0.3:  # Adjust the probability as desired
+                cell = (i, j)
+                if cell not in (START, END):
+                    obstacles.add(cell)
+                    draw_cell(GRAY, cell)
+                    
+# Function to create menu using tkinter
 def create_menu():
     root = tk.Tk()
     root.title("Algorithm Selection")
