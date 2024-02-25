@@ -38,3 +38,8 @@ Feel free to contribute, report issues, or suggest improvements! Happy pathfindi
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
 Limitations: This project uses grid based map tile for pathfinding algorithms to work on which may or may not limit the algorithm's capabilities.(I may change the map tile versions in the future)
+
+# Goals
+This project is going to be around 1000 lines of code.
+I may keep making making updates after reaching that goal
+The assests I use in the future will be copyright-free 
