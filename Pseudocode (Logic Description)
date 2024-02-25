@@ -1,4 +1,4 @@
-# Import necessary libraries                                               Updates Pending                  
+# Import necessary libraries                                                               
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -199,14 +199,31 @@ Function remove_obstacle(cell, obstacles):
         Call draw_grid()
         Update the window display
 
+# Function to generate a random maze with obstacles
+Function generate_random_maze(obstacles):
+     for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
+             set the probability of random obstacles() < 0.3: #adjust the probability 
+                   cell = (i, j)
+                if cell not in (START, END):
+                    add obstacles(cell)
+                    draw_cell(GRAY, cell)
+
 # Function to create GUI menu for algorithm selection
 Function create_menu():
     Create a tkinter window
     Set the title of the window to "Algorithm Selection"
 
+# Create an integer variable to hold the state of the maze checkbox
+    maze_var = IntegerVariable()
+# Create a checkbox widget labeled "Maze" and associate it with the maze_var variable
+    maze_checkbox = CreateCheckboxWidget(parent=root, text="Maze", variable=maze_var)
+# Pack the checkbox widget into the parent widget (root)
+    PackWidget(widget=maze_checkbox)
+
     Define a function to select an algorithm:
         Close the menu window
-        Run the selected algorithm
+        Run the selected algorithm (algorithm, get maze variable())
 
     Add labels and buttons for each algorithm option:
         Button for A* algorithm
@@ -217,8 +234,11 @@ Function create_menu():
     Start the tkinter event loop
 
 # Main function
-Function run_algorithm(selected_algorithm):
-    Call reset()
+Function run_algorithm(selected_algorithm, create_maze):
+    Call reset() 
+    obstacles = set()
+    if create_maze is selected:
+        generate_random_maze(obstacles)
 
     Set running to true
     Set start_set to false
@@ -263,6 +283,8 @@ Function run_algorithm(selected_algorithm):
                     Set end to END
                     Create an empty set obstacles
                     Call reset()
+               Elif event key is ESCAPE:
+                    create_menu()
             Else if event type is MOUSEBUTTONDOWN:
                 Set pos to pygame.mouse.get_pos()
                 Set cell_pos to (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
