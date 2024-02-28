@@ -206,13 +206,28 @@ def neighbors(cell):
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
     
-#Obstacle removal function    
+# Function to remove an obstacle from the grid
 def remove_obstacle(cell, obstacles):
     if cell in obstacles:
-        obstacles.remove(cell) #removes the obstacle
-        draw_cell(BLACK, cell) #for filling the removed obstacle's color
-        draw_grid()            #for grid line
-        pygame.display.flip()  #update the window
+        obstacles.remove(cell)
+        # Redraw the cell with black color to cover the obstacle
+        draw_cell(BLACK, cell)
+        # Redraw the grid lines around the removed obstacle
+        x, y = cell
+        # Redraw the horizontal line above the removed obstacle
+        if y > 0:
+            pygame.draw.line(screen, WHITE, (0, y * CELL_SIZE), (SCREEN_SIZE[0], y * CELL_SIZE))
+        # Redraw the horizontal line below the removed obstacle
+        if y < GRID_SIZE - 1:
+            pygame.draw.line(screen, WHITE, (0, (y + 1) * CELL_SIZE), (SCREEN_SIZE[0], (y + 1) * CELL_SIZE))
+        # Redraw the vertical line to the left of the removed obstacle
+        if x > 0:
+            pygame.draw.line(screen, WHITE, (x * CELL_SIZE, 0), (x * CELL_SIZE, SCREEN_SIZE[1]))
+        # Redraw the vertical line to the right of the removed obstacle
+        if x < GRID_SIZE - 1:
+            pygame.draw.line(screen, WHITE, ((x + 1) * CELL_SIZE, 0), ((x + 1) * CELL_SIZE, SCREEN_SIZE[1]))
+        pygame.display.flip()  # Update the display
+
 
 # Function to generate a random maze with obstacles
 def generate_random_maze(obstacles):
