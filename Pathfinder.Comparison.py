@@ -34,13 +34,19 @@ pygame.init()
 screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Pathfinding Visualization")
 
+# Define a set to keep track of modified cells
+modified_cells = set()
+
+
 # Function to draw the grid
 def draw_grid():
     # Draws the grid lines on the Pygame window
+    screen.fill(BLACK)  # Fill the screen with black color
     for x in range(0, SCREEN_SIZE[0], CELL_SIZE):
         pygame.draw.line(screen, WHITE, (x, 0), (x, SCREEN_SIZE[1]))
     for y in range(0, SCREEN_SIZE[1], CELL_SIZE):
         pygame.draw.line(screen, WHITE, (0, y), (SCREEN_SIZE[0], y))
+    pygame.display.flip()  # Update the display
 
 # Function to draw a colored cell at a specific position
 def draw_cell(color, position):
@@ -250,7 +256,7 @@ def create_menu():
 
     def select_algorithm(algorithm):
         root.destroy()  # Close the menu
-        run_algorithm(algorithm) # Run the selected algorithm
+         run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
     # Add labels and buttons for each algorithm option
     tk.Label(root, text="Select Algorithm:").pack()
     tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
@@ -274,7 +280,6 @@ def run_algorithm(selected_algorithm, create_maze):
     end_set = False
     start = START
     end = END
-    obstacles = set()
     drawing_obstacle = False
 
     while running: # Inside the pygame event handling loop
