@@ -1,4 +1,4 @@
-# Import Statements                                 Update Pending                            
+# Import Statements                                                          
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -256,7 +256,7 @@ def create_menu():
 
     def select_algorithm(algorithm):
         root.destroy()  # Close the menu
-         run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
+        run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
     # Add labels and buttons for each algorithm option
     tk.Label(root, text="Select Algorithm:").pack()
     tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
