@@ -297,8 +297,15 @@ def run_algorithm(selected_algorithm, create_maze):
                     obstacles = set()
                     reset()
                 elif event.key == pygame.K_ESCAPE:
-                    create_menu()  # Show the algorithm selection menu    
-                    
+                    create_menu()  # Show the algorithm selection menu
+                elif event.key == pygame.K_1:  # Shortcut for A*
+                    selected_algorithm = ASTAR
+                elif event.key == pygame.K_2:  # Shortcut for Dijkstra's
+                    selected_algorithm = DIJKSTRA
+                elif event.key == pygame.K_3:  # Shortcut for BFS
+                    selected_algorithm = BFS
+                elif event.key == pygame.K_4:  # Shortcut for DFS
+                    selected_algorithm = DFS                        
             elif event.type == pygame.MOUSEBUTTONDOWN:   # Handle mouse button down events   
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
