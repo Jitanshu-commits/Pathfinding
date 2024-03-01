@@ -29,6 +29,9 @@ SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)  # Size of the Pyga
 START = (0, 0)
 END = (GRID_SIZE - 1, GRID_SIZE - 1)
 
+# Initialize pygame
+pygame.init()
+
 # Initialize Pygame window
 Create Pygame window with size SCREEN_SIZE
 Set window caption to "Pathfinding Visualization"
@@ -202,13 +205,26 @@ Function neighbors(cell):
 
     Return valid_neighbors
 
-# Function to remove an obstacle from the grid
 Function remove_obstacle(cell, obstacles):
     If cell is in obstacles:
         Remove cell from obstacles
-        Call draw_cell with color BLACK and cell
-        Call draw_grid()
-        Update the window display
+        # Redraw the cell with black color to cover the obstacle
+        draw_cell(BLACK, cell)
+        # Redraw the grid lines around the removed obstacle
+        x, y = cell
+        # Redraw the horizontal line above the removed obstacle
+        If y > 0:
+            Draw a line on the window with color WHITE from (0, y * CELL_SIZE) to (SCREEN_SIZE[0], y * CELL_SIZE)
+        # Redraw the horizontal line below the removed obstacle
+        If y < GRID_SIZE - 1:
+            Draw a line on the window with color WHITE from (0, (y + 1) * CELL_SIZE) to (SCREEN_SIZE[0], (y + 1) * CELL_SIZE)
+        # Redraw the vertical line to the left of the removed obstacle
+        If x > 0:
+            Draw a line on the window with color WHITE from (x * CELL_SIZE, 0) to (x * CELL_SIZE, SCREEN_SIZE[1])
+        # Redraw the vertical line to the right of the removed obstacle
+        If x < GRID_SIZE - 1:
+            Draw a line on the window with color WHITE from ((x + 1) * CELL_SIZE, 0) to ((x + 1) * CELL_SIZE, SCREEN_SIZE[1])
+        Update the display
 
 # Function to generate a random maze with obstacles
 Function generate_random_maze(obstacles):
@@ -256,7 +272,7 @@ Function run_algorithm(selected_algorithm, create_maze):
     Set end_set to false
     Set start to START
     Set end to END
-    Create an empty set obstacles
+   
     Set drawing_obstacle to false
 
     While running is true:
