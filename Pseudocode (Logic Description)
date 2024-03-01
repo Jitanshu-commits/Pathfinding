@@ -21,11 +21,12 @@ BLUE = (0, 0, 255)  # RGB values for blue color
 YELLOW = (255, 255, 0)  # RGB values for yellow color
 GRAY = (128, 128, 128)  # RGB values for gray color
 
+
 GRID_SIZE = 20  # Number of cells in each row/column of the grid
 CELL_SIZE = 30  # Size of each cell in pixels
 SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)  # Size of the Pygame window
 
-# Define Start and End (Range) for algorithms to work on.
+# Define Start and End (Grid Range) for algorithms to work on.
 START = (0, 0)
 END = (GRID_SIZE - 1, GRID_SIZE - 1)
 
@@ -310,8 +311,17 @@ Function run_algorithm(selected_algorithm, create_maze):
                     Set end to END
                     Create an empty set obstacles
                     Call reset()
-               Elif event key is ESCAPE:
+               Else if event key is ESCAPE:
                     create_menu()
+               Else If event.key is equal to pygame.K_1:  # Shortcut for A*
+                    selected_algorithm = ASTAR 
+               Else If event.key is equal to pygame.K_2:  # Shortcut for Dijkstra's
+                    selected_algorithm = DIJKSTRA
+               Else If event.key is equal to pygame.K_3:  # Shortcut for BFS
+                    selected_algorithm = BFS
+               Else If event.key is equal to pygame.K_4:  # Shortcut for DFS
+                    selected_algorithm = DFS
+ 
             Else if event type is MOUSEBUTTONDOWN:
                 Set pos to pygame.mouse.get_pos()
                 Set cell_pos to (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
