@@ -25,9 +25,16 @@ GRID_SIZE = 20  # Number of cells in each row/column of the grid
 CELL_SIZE = 30  # Size of each cell in pixels
 SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)  # Size of the Pygame window
 
+# Define Start and End (Range) for algorithms to work on.
+START = (0, 0)
+END = (GRID_SIZE - 1, GRID_SIZE - 1)
+
 # Initialize Pygame window
 Create Pygame window with size SCREEN_SIZE
 Set window caption to "Pathfinding Visualization"
+
+# Define a set to keep track of modified cells:
+    modified_cells = set()
 
 # Function to draw the grid
 Function draw_grid():
@@ -41,6 +48,8 @@ Function draw_grid():
 # Function to draw a colored cell at a specific position
 Function draw_cell(color, position):
     Draw a rectangle on the window with specified color at position[0] * CELL_SIZE, position[1] * CELL_SIZE
+    # Add the modified cell to the set
+    modified_cells.add(position)
 
 # Function to visualize the path with a delay
 Function visualize_path(path, color):
@@ -53,6 +62,8 @@ Function visualize_path(path, color):
 Function reset():
     Fill the window with color BLACK
     Call draw_grid()
+    # Clear the set of modified cells
+    modified_cells.clear()
     Update the window display
 
 # Dijkstra's algorithm
