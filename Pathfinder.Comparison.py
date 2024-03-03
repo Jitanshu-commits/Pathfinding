@@ -218,20 +218,28 @@ def remove_obstacle(cell, obstacles):
         obstacles.remove(cell)
         # Redraw the cell with black color to cover the obstacle
         draw_cell(BLACK, cell)
-        # Redraw the grid lines around the removed obstacle
+        
+        # Redraw the surrounding lines only for the specific cell
         x, y = cell
+        x_pixel = x * CELL_SIZE
+        y_pixel = y * CELL_SIZE
+        
         # Redraw the horizontal line above the removed obstacle
         if y > 0:
-            pygame.draw.line(screen, WHITE, (0, y * CELL_SIZE), (SCREEN_SIZE[0], y * CELL_SIZE))
+            pygame.draw.line(screen, WHITE, (x_pixel, y_pixel), (x_pixel + CELL_SIZE, y_pixel))
+        
         # Redraw the horizontal line below the removed obstacle
         if y < GRID_SIZE - 1:
-            pygame.draw.line(screen, WHITE, (0, (y + 1) * CELL_SIZE), (SCREEN_SIZE[0], (y + 1) * CELL_SIZE))
+            pygame.draw.line(screen, WHITE, (x_pixel, y_pixel + CELL_SIZE), (x_pixel + CELL_SIZE, y_pixel + CELL_SIZE))
+        
         # Redraw the vertical line to the left of the removed obstacle
         if x > 0:
-            pygame.draw.line(screen, WHITE, (x * CELL_SIZE, 0), (x * CELL_SIZE, SCREEN_SIZE[1]))
+            pygame.draw.line(screen, WHITE, (x_pixel, y_pixel), (x_pixel, y_pixel + CELL_SIZE))
+        
         # Redraw the vertical line to the right of the removed obstacle
         if x < GRID_SIZE - 1:
-            pygame.draw.line(screen, WHITE, ((x + 1) * CELL_SIZE, 0), ((x + 1) * CELL_SIZE, SCREEN_SIZE[1]))
+            pygame.draw.line(screen, WHITE, (x_pixel + CELL_SIZE, y_pixel), (x_pixel + CELL_SIZE, y_pixel + CELL_SIZE))
+        
         pygame.display.flip()  # Update the display
 
 
@@ -363,5 +371,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#warning I will change the license sooner or later in the near future
+#Fixed object removal
