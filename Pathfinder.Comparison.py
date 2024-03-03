@@ -21,10 +21,11 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 GRAY = (128, 128, 128)
 
-GRID_SIZE = 20
+GRID_SIZE = 20  #sets the actual range of the algorithms on a grid 
 CELL_SIZE = 30
 SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
 
+# Define Start and End (Grid Range) for algorithms to work on.
 START = (0, 0)
 END = (GRID_SIZE - 1, GRID_SIZE - 1)
 
