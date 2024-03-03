@@ -211,21 +211,30 @@ Function remove_obstacle(cell, obstacles):
         Remove cell from obstacles
         # Redraw the cell with black color to cover the obstacle
         draw_cell(BLACK, cell)
-        # Redraw the grid lines around the removed obstacle
+        
+        # Redraw the surrounding lines only for the specific cell
         x, y = cell
+        x_pixel = x * CELL_SIZE
+        y_pixel = y * CELL_SIZE
+        
         # Redraw the horizontal line above the removed obstacle
         If y > 0:
-            Draw a line on the window with color WHITE from (0, y * CELL_SIZE) to (SCREEN_SIZE[0], y * CELL_SIZE)
+            Draw a line on the window with color WHITE from (x_pixel, y_pixel) to (x_pixel + CELL_SIZE, y_pixel)
+        
         # Redraw the horizontal line below the removed obstacle
         If y < GRID_SIZE - 1:
-            Draw a line on the window with color WHITE from (0, (y + 1) * CELL_SIZE) to (SCREEN_SIZE[0], (y + 1) * CELL_SIZE)
+            Draw a line on the window with color WHITE from (x_pixel, y_pixel + CELL_SIZE) to (x_pixel + CELL_SIZE, y_pixel + CELL_SIZE)
+        
         # Redraw the vertical line to the left of the removed obstacle
         If x > 0:
-            Draw a line on the window with color WHITE from (x * CELL_SIZE, 0) to (x * CELL_SIZE, SCREEN_SIZE[1])
+            Draw a line on the window with color WHITE from (x_pixel, y_pixel) to (x_pixel, y_pixel + CELL_SIZE)
+        
         # Redraw the vertical line to the right of the removed obstacle
         If x < GRID_SIZE - 1:
-            Draw a line on the window with color WHITE from ((x + 1) * CELL_SIZE, 0) to ((x + 1) * CELL_SIZE, SCREEN_SIZE[1])
+            Draw a line on the window with color WHITE from (x_pixel + CELL_SIZE, y_pixel) to (x_pixel + CELL_SIZE, y_pixel + CELL_SIZE)
+        
         Update the display
+
 
 # Function to generate a random maze with obstacles
 Function generate_random_maze(obstacles):
