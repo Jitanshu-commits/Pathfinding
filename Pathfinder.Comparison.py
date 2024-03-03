@@ -38,7 +38,6 @@ pygame.display.set_caption("Pathfinding Visualization")
 # Define a set to keep track of modified cells
 modified_cells = set()
 
-
 # Function to draw the grid
 def draw_grid():
     # Draws the grid lines on the Pygame window
