@@ -313,6 +313,8 @@ Function run_algorithm(selected_algorithm, create_maze):
                         Call bfs with start, end, and obstacles
                         Record the end time for BFS algorithm
                         Print "BFS Algorithm Time:", end time - start time, "ms"
+                    Else:
+                        messagebox to show info("Error", "Start and/or end points are not set.")             
                 Else if event key is C:
                     Set start_set to false
                     Set end_set to false
