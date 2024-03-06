@@ -317,6 +317,8 @@ def run_algorithm(selected_algorithm, create_maze):
                             dfs(start, end, obstacles)
                             dfs_end_time = pygame.time.get_ticks()
                             print(f"DFS Algorithm Time: {dfs_end_time - dfs_start_time} ms")
+                    else:
+                        messagebox.showerror("Error", "Start and/or end points are not set.")           
                 elif event.key == pygame.K_c:   # If C key is pressed, clear the grid and reset
                     start_set = False
                     end_set = False
