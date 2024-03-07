@@ -1,7 +1,7 @@
   <img width="980" alt="Pathfinder" src="https://github.com/Jitanshu-commits/Pathfinding/assets/146759344/df24c6b2-3437-4ba6-8980-3df89494cf16">
                                                             
                                                                   
-                                               Demo - End product will be better than shown above.
+                                  Demo - End product will be better than shown above.
                                   
 
 # Pathfinding
@@ -37,6 +37,7 @@ Feel free to contribute, report issues, or suggest improvements! Happy pathfindi
 #Added random obstacle (maze) generation.
 #Added hotkeys to select a algorithm- 1-A*,2-DIJKSTRA,3-BFS,4-DFS without clearing the grid
 #Added some error handling
+#Added a slider for visualization delay(slows the visualization process).
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
 Limitations: This project uses grid based map tile for pathfinding algorithms to work on which may or may not limit the algorithm's capabilities.(I may change the map tile versions in the future)
