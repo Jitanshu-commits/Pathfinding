@@ -5,6 +5,7 @@ import heapq  # For priority queue implementation in Dijkstra's and A*
 from collections import deque  # For implementing the queue in BFS
 import tkinter as tk  # For creating GUI for algorithm selection
 from tkinter import messagebox  # For displaying message boxes in tkinter GUI
+from tkinter import Scale  # For adding the slider
 
 # Constants for algorithm selection
 ASTAR = 1
@@ -261,6 +262,13 @@ def create_menu():
     maze_var = tk.IntVar()
     maze_checkbox = tk.Checkbutton(root, text="Maze", variable=maze_var)
     maze_checkbox.pack()
+
+    # Adding slider for delay
+    delay_label = tk.Label(root, text="Visualization Delay:")
+    delay_label.pack()
+    delay_slider = Scale(root, from_=0, to=200, orient=tk.HORIZONTAL, length=200)
+    delay_slider.set(DELAY)  # Set default value
+    delay_slider.pack()
 
     def select_algorithm(algorithm):
         root.destroy()  # Close the menu
