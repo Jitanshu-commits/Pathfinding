@@ -1,4 +1,4 @@
-# Import Statements                               Updates Pending                           
+# Import Statements                                                          
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -39,6 +39,10 @@ pygame.display.set_caption("Pathfinding Visualization")
 # Define a set to keep track of modified cells
 modified_cells = set()
 
+# Default delay for visualization
+DELAY = 50
+DELAY_VISITED= 10
+
 # Function to draw the grid
 def draw_grid():
     # Draws the grid lines on the Pygame window
@@ -60,7 +64,7 @@ def visualize_path(path, color):
     for cell in path:
         draw_cell(color, cell)
         pygame.display.flip()
-        pygame.time.wait(50)      #User can change wait time to 0 for the real comparison of time taken by each Algorithm.
+        pygame.time.wait(DELAY)      #User can change wait time to 0 for the real comparison of time taken by each Algorithm.
 
 # Reset the screen, draw the grid, and update the display
 def reset():
@@ -85,6 +89,8 @@ def dijkstra(start, end, obstacles):
         visited.add(current)               # Mark the current node as visited
         if current not in (start, end) and current not in obstacles:
             draw_cell(GREEN, current)      # Draw the cell if it's not the start or end
+            # Adjust the delay for visited cells
+            pygame.time.wait(DELAY_VISITED)
 
         if current == end:
             visualize_path(path, YELLOW)
@@ -113,6 +119,8 @@ def astar(start, end, obstacles):
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
             draw_cell(BLUE, current)
+            # Adjust the delay for visited cells
+            pygame.time.wait(DELAY_VISITED)
 
         if current == end:
             visualize_path(path, YELLOW)
@@ -142,6 +150,8 @@ def dfs(start, end, obstacles):
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
             draw_cell(BLUE, current)
+            # Adjust the delay for visited cells
+            pygame.time.wait(DELAY_VISITED)
 
         if current == end:
             visualize_path(path, YELLOW)
@@ -174,6 +184,8 @@ def bfs(start, end, obstacles):
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
             draw_cell(BLUE, current)
+            # Adjust the delay for visited cells
+            pygame.time.wait(DELAY_VISITED)
 
         if current == end:
             visualize_path(path, YELLOW)
@@ -271,6 +283,8 @@ def create_menu():
     delay_slider.pack()
 
     def select_algorithm(algorithm):
+        global DELAY
+        DELAY = delay_slider.get()  # Update the delay value
         root.destroy()  # Close the menu
         run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
     # Add labels and buttons for each algorithm option
