@@ -396,3 +396,4 @@ def main():
 if __name__ == "__main__":
     main()
 #Fixed object removal
+#Added a slider for visualization delay(needs more work)
