@@ -5,6 +5,7 @@ import heapq  # Import the heapq module for priority queue implementation in Dij
 from collections import deque  # Import deque from collections for implementing the queue in BFS
 import tkinter as tk  # Import tkinter as tk for creating GUI for algorithm selection
 from tkinter import messagebox  # Import messagebox from tkinter for displaying message boxes in tkinter GUI
+from tkinter import Scale  # For adding the slider
 
 # Constants for algorithm selection
 ASTAR = 1
@@ -40,6 +41,10 @@ Set window caption to "Pathfinding Visualization"
 # Define a set to keep track of modified cells:
     modified_cells = set()
 
+# Default delay for visualization
+DELAY = 50  #(milliseconds)
+DELAY_VISITED= 10  #(milliseconds)
+
 # Function to draw the grid
 Function draw_grid():
    # Loop to draw horizontal grid lines
@@ -60,7 +65,7 @@ Function visualize_path(path, color):
     For each cell in path:
         Draw the cell with the specified color on the window
         Update the window display
-        Wait for 50 milliseconds
+        Wait for DELAY
 
 # Reset the screen, draw the grid, and update the display
 Function reset():
