@@ -267,6 +267,14 @@ Function create_menu():
         Close the menu window
         Run the selected algorithm (algorithm, get maze variable())
 
+    Display a label indicating "Visualization Delay"
+    Create a slider widget named delay_slider
+    Set the range of the slider from 0 to 200
+    Set the orientation of the slider to horizontal
+    Set the length of the slider to 200 pixels
+    Set the initial value of the slider to a default value defined by the variable DELAY
+    Display the slider widge
+
     Add labels and buttons for each algorithm option:
         Button for A* algorithm
         Button for Dijkstra's algorithm
