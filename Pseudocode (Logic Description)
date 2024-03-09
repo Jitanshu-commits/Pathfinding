@@ -1,4 +1,4 @@
-# Import necessary libraries                          Updates Pending                                   
+# Import necessary libraries                                                           
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -90,6 +90,7 @@ Function dijkstra(start, end, obstacles):
 
         If current position is not the start or end, and not an obstacle:
             Draw the cell with color GREEN on the window
+            Wait for a duration of time specified by the variable DELAY_VISITED
 
         If current position is the end:
             Call visualize_path with the current path and color YELLOW
@@ -118,6 +119,7 @@ Function astar(start, end, obstacles):
 
         If current position is not the start or end, and not an obstacle:
             Draw the cell with color BLUE on the window
+            Wait in pygame for DELAY_VISITED
 
         If current position is the end:
             Call visualize_path with the current path and color YELLOW
@@ -146,6 +148,7 @@ Function dfs(start, end, obstacles):
 
         If current position is not the start or end, and not an obstacle:
             Draw the cell with color BLUE on the window
+            Wait in pygame for DELAY_VISITED
 
         If current position is the end:
             Call visualize_path with the current path and color YELLOW
@@ -176,6 +179,7 @@ Function bfs(start, end, obstacles):
 
         If current position is not the start or end, and not an obstacle:
             Draw the cell with color BLUE on the window
+            Wait in pygame for DELAY_VISITED
 
         If current position is the end:
             Call visualize_path with the current path and color YELLOW
