@@ -3,112 +3,56 @@ turning the algorithms to classes may help me reduce loops (make it efficient). 
 
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
 (Additions- BFS ,DFS)
-1. Import Statements
+draw_grid(): This function is responsible for drawing the grid lines on the Pygame window. It iterates over the screen size and draws horizontal and vertical lines to create a grid.
 
-import random
-import pygame
-import heapq
-from collections import deque
-random: Module for generating pseudo-random numbers.
-pygame: Library for creating games and multimedia applications.
-heapq: Module for heap queue algorithm.
-deque: Double-ended queue implementation for efficiently adding and removing elements.
-2. Constants
+Let's dive deeper into the functionality of each function:
 
-# Color Constants
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
-GRAY = (128, 128, 128)
+1. `draw_grid()`: This foundational function sets up the visual representation of the grid system within the Pygame window.
+It meticulously iterates through the dimensions of the screen, meticulously crafting the grid pattern by drawing horizontal and vertical lines, ensuring a clear and structured layout.
 
-# Grid Constants
-GRID_SIZE = 20
-CELL_SIZE = 30
-SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
+2. `draw_cell(color, position)`: A critical function in the visualization process, `draw_cell()` brings individual cells to life within the grid.
+Given parameters for color and position, it utilizes Pygame's drawing capabilities to create a rectangular representation of the cell, ensuring each cell is distinctly identifiable with its specified color at the designated position.
 
-# Start and End Points
-START = (0, 0)
-END = (GRID_SIZE - 1, GRID_SIZE - 1)
-Constants for colors and grid-related parameters.
-3. Pygame Initialization
+3. `visualize_path(path, color)`: This function adds an extra layer of insight into the algorithm's decision-making process by visually representing the path taken.
+It meticulously traverses through each cell in the provided path, dynamically highlighting them with the specified color, offering users a real-time glimpse into the algorithm's progression.
 
-pygame.init()
-screen = pygame.display.set_mode(SCREEN_SIZE)
-pygame.display.set_caption("Pathfinding Visualization")
-Initializes the Pygame library, creates a window with the specified size, and sets the window caption.
-4. Drawing Functions
-python
+4. `reset()`: Serving as the reset mechanism, `reset()` ensures a clean slate for each algorithm execution. By filling the Pygame window with a black color and redrawing the grid, 
+it wipes away any remnants of previous visualizations, priming the environment for a fresh algorithm run or visualization.
 
-# Function to draw the grid
-def draw_grid():
-    # ...
+5. `dijkstra(start, end, obstacles)`: At the heart of this function lies the implementation of Dijkstra's algorithm,
+meticulously navigating the grid to uncover the shortest path from the start to the end node. Leveraging a priority queue, it meticulously selects the next node to explore, ensuring an optimal path discovery process.
 
-# Function to draw a colored cell at a specific position
-def draw_cell(color, position):
-    # ...
+6. `astar(start, end, obstacles)`: With a fusion of Dijkstra's algorithm and heuristic estimation, `astar()` undertakes the challenge of finding the shortest path on the grid.
+By employing a priority queue based on the sum of current cost and heuristic, it efficiently navigates the grid while factoring in the estimated distance to the goal.
 
-# Function to visualize the path with a delay
-def visualize_path(path, color):
-    # ...
+7. `dfs(start, end, obstacles)`: This function embarks on a journey through the grid using Depth-First Search (DFS). It bravely traverses as far as possible along each branch,
+backtracking only when faced with a dead-end, ultimately discovering the end node or exhaustively exploring all feasible paths.
 
-# Reset the screen, draw the grid, and update the display
-def reset():
-    # ...
-5. Pathfinding Algorithms
+8. `bfs(start, end, obstacles)`: Embodying the essence of Breadth-First Search (BFS), this function systematically explores the grid level by level,
+emanating from the start node. Its steadfast approach guarantees the discovery of the shortest path upon reaching the end node, making it an ideal candidate for optimal solutions.
 
+9. `heuristic(point, goal)`: As the backbone of A* algorithm's guidance system, this function calculates a heuristic value critical for navigating towards the goal node. 
+Through the meticulous computation of the Manhattan distance between the current point and the goal, it provides a valuable estimate of the remaining distance to the goal.
 
-# Dijkstra's algorithm
-def dijkstra(start, end, obstacles):
-    # ...
+10. `neighbors(cell)`: Acting as the gatekeeper to the grid, `neighbors()` identifies the valid neighboring cells for a given cell.
+By meticulously considering adjacent cells in the four cardinal directions, it ensures the algorithm's exploration remains confined within the boundaries of the grid.
 
-# A* algorithm
-def astar(start, end, obstacles):
-    # ...
+11. `remove_obstacle(cell, obstacles)`: When obstacles need to be vanquished from the grid, this function steps up to the challenge.
+It orchestrates the removal of the obstacle from the set of obstacles, meticulously clearing the cell by redrawing it with a black color, and meticulously updating the surrounding grid lines to conceal the erstwhile obstacle.
 
-# DFS algorithm
-def dfs(start, end, obstacles):
-    # ...
+12. `generate_random_maze(obstacles)`: Infusing a dash of unpredictability into the grid, this function breathes life into a maze with obstacles.
+It meticulously traverses each cell in the grid, making calculated random decisions on whether to add an obstacle, ultimately sculpting a maze-like structure that puts the algorithms to the test.
 
-# BFS algorithm
-def bfs(start, end, obstacles):
-    # ...
+13. `create_menu()`: This function serves as the gateway to user interaction, crafting a visually appealing menu interface using Tkinter.
+It empowers users to choose their preferred algorithm and fine-tune visualization settings, providing a seamless and intuitive means to interact with the program.
 
-# Heuristic function for A*
-def heuristic(point, goal):
-    # ...
+14. `run_algorithm(selected_algorithm, create_maze)`: As the conductor orchestrating the symphony of algorithms,
+this function takes charge of executing the selected algorithm. It adeptly manages user inputs, sets the stage for algorithmic exploration, and navigates the execution process, ensuring a fluid and immersive user experience.
 
-# Function to get valid neighbors for a cell
-def neighbors(cell):
-    # ...
-6. Main Function
-python
+15. `main()`: Serving as the cornerstone of the program's architecture, `main()` lays the foundation for user interaction.
+By initializing the menu interface through `create_menu()`, it ignites the spark of user engagement, inviting them to embark on a journey of algorithmic exploration and visualization on the grid.
 
-def main():
-    # ...
-
-if __name__ == "__main__":
-    main()
-The main function initializes the screen, handles user input, and runs various pathfinding algorithms based on the user's actions.
-7. User Interface and Input Handling
-The code responds to user input events (e.g., mouse clicks, key presses) to set start and end points, draw obstacles, and initiate pathfinding algorithms.
-8. Running Pathfinding Algorithms
-When the user presses the spacebar (pygame.K_SPACE), Dijkstra's, A*, DFS, and BFS algorithms are run simultaneously, and the time taken by each algorithm is printed.
-9. Pygame Event Loop
-The program enters a Pygame event loop (pygame.event.get()) to handle user input, update the display, and keep the application running until the user closes the window (pygame.QUIT event).
-10. Obstacle Drawing
-The code allows users to draw obstacles on the grid by clicking and dragging the mouse.
-11. Cleanup
-
-
-pygame.quit()
-Properly shuts down the Pygame library when the program exits.
-
-The main function is called if the script is executed directly.
-The script allows the user to set start and end points, mark cells as obstacles, and compare Dijkstra's and A* algorithms in finding the shortest path.
-
+Learned a new word "meticulous" recently
 Note: Make sure to have the Pygame library installed (pip install pygame) before running this script.
 PS: I plan on adding new algos and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
 (I want a new GUI pls help)
