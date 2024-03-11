@@ -1,4 +1,4 @@
-# Import Statements                               Updates Pending                           
+# Import Statements                                                      
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
