@@ -80,6 +80,14 @@ def dijkstra(start, end, obstacles):
     visited = set()
 
     while heap:
+        # Update the UI periodically
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                return
+
     
         (cost, current, path) = heapq.heappop(heap)     # Pop the minimum cost node from the heap
 
@@ -101,6 +109,10 @@ def dijkstra(start, end, obstacles):
                 heapq.heappush(heap, (cost + 1, neighbor, path + [current]))      # Add the neighbor to the heap with updated cost and path
 
         pygame.display.flip()
+
+        # Adjust the delay to control the visualization speed for other updates
+        pygame.time.wait(DELAY)
+        
     # If the loop completes without finding the end node, display a message
     messagebox.showinfo("Dijkstra's", "End node not reachable!")    
 
@@ -111,6 +123,14 @@ def astar(start, end, obstacles):
     visited = set()
 
     while heap:
+         # Update the UI periodically
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                return
+                
         (cost, current, path) = heapq.heappop(heap)
 
         if current in visited:
@@ -131,6 +151,9 @@ def astar(start, end, obstacles):
                 heapq.heappush(heap, (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]))
 
         pygame.display.flip()
+
+        # Adjust the delay to control the visualization speed
+        pygame.time.wait(DELAY)
         
     # If the loop completes without finding the end node, display a message
     messagebox.showinfo("A*", "End node not reachable!")
@@ -396,4 +419,4 @@ def main():
 if __name__ == "__main__":
     main()
 #Fixed object removal
-#Added a slider for visualization delay(needs more work)
+#Added a slider for visualization delay
