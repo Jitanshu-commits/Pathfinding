@@ -165,6 +165,14 @@ def dfs(start, end, obstacles):
     visited = set()
 
     while stack:
+        # Update the UI periodically
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                return
+                
         current, path = stack.pop()
 
         if current in visited:
@@ -188,6 +196,9 @@ def dfs(start, end, obstacles):
                 stack.append((neighbor, path + [current]))
 
         pygame.display.flip()
+
+        # Adjust the delay to control the visualization speed
+        pygame.time.wait(DELAY)
         
     # If the loop completes without finding the end node, display a message
     messagebox.showinfo("DFS", "End node not reachable!")
@@ -199,6 +210,14 @@ def bfs(start, end, obstacles):
     visited = set()
 
     while queue:
+         # Update the UI periodically
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                return
+                
         current, path = queue.popleft()
 
         if current in visited:
@@ -220,6 +239,9 @@ def bfs(start, end, obstacles):
                 queue.append((neighbor, path + [current]))
 
         pygame.display.flip()
+
+        # Adjust the delay to control the visualization speed
+        pygame.time.wait(DELAY)
 
      # If the loop completes without finding the end node, display a message
     messagebox.showinfo("BFS", "End node not reachable!")
