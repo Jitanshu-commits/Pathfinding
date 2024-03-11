@@ -81,6 +81,13 @@ Function dijkstra(start, end, obstacles):
     Create an empty set visited
 
     While heap is not empty:
+        Loop through each event in pygame.event.get():
+            If the event type is QUIT:
+              Quit pygame
+              Return
+            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+              Return
+
         Pop the element with the smallest cost, current position, and path from heap
 
         If current position is in visited:
@@ -101,6 +108,9 @@ Function dijkstra(start, end, obstacles):
                 Push (cost + 1, neighbor, path + [current]) onto heap
 
         Update the window display
+
+        Wait in pygame for DELAY
+
      # If the loop completes without finding the end node, display a message
     messagebox to show info("Dijkstra", "End node not reachable!")    
 
