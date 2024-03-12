@@ -198,6 +198,12 @@ Function bfs(start, end, obstacles):
     Create an empty set visited
 
     While queue is not empty:
+        If the event type is QUIT:
+              Quit pygame
+              Return
+            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+              Return
+
         Dequeue the element with current position and path from queue
 
         If current position is in visited:
@@ -218,6 +224,8 @@ Function bfs(start, end, obstacles):
                 Enqueue (neighbor, path + [current]) onto queue
 
         Update the window display
+
+        Wait in pygame for DELAY
 
      # If the loop completes without finding the end node, display a message
     messagebox to show info("BFS", "End node not reachable!")
