@@ -120,11 +120,12 @@ Function astar(start, end, obstacles):
     Create an empty set visited
 
     While heap is not empty:
-        If the event type is QUIT:
-              Quit pygame
-              Return
-            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
-              Return
+        Loop through each event in pygame.event.get():
+            If the event type is QUIT:
+                  Quit pygame
+                  Return
+                Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+                  Return
 
         Pop the element with the smallest cost, current position, and path from heap
 
@@ -158,11 +159,12 @@ Function dfs(start, end, obstacles):
     Create an empty set visited
 
     While stack is not empty:
-        If the event type is QUIT:
-              Quit pygame
-              Return
-            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
-              Return
+        Loop through each event in pygame.event.get():
+            If the event type is QUIT:
+                  Quit pygame
+                  Return
+                Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+                  Return
 
         Pop the element with current position and path from stack
 
@@ -198,11 +200,12 @@ Function bfs(start, end, obstacles):
     Create an empty set visited
 
     While queue is not empty:
-        If the event type is QUIT:
-              Quit pygame
-              Return
-            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
-              Return
+        Loop through each event in pygame.event.get():
+            If the event type is QUIT:
+                  Quit pygame
+                  Return
+                Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+                  Return
 
         Dequeue the element with current position and path from queue
 
