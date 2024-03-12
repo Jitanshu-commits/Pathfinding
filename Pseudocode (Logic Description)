@@ -120,6 +120,12 @@ Function astar(start, end, obstacles):
     Create an empty set visited
 
     While heap is not empty:
+        If the event type is QUIT:
+              Quit pygame
+              Return
+            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+              Return
+
         Pop the element with the smallest cost, current position, and path from heap
 
         If current position is in visited:
@@ -140,6 +146,9 @@ Function astar(start, end, obstacles):
                 Push (cost + 1 + heuristic(neighbor, end), neighbor, path + [current]) onto heap
 
         Update the window display
+
+        Wait in pygame for DELAY
+
       # If the loop completes without finding the end node, display a message
    messagebox to show info("A*", "End node not reachable!")
 
@@ -149,6 +158,12 @@ Function dfs(start, end, obstacles):
     Create an empty set visited
 
     While stack is not empty:
+        If the event type is QUIT:
+              Quit pygame
+              Return
+            Else if the event type is KEYDOWN and the key pressed is ESCAPE:
+              Return
+
         Pop the element with current position and path from stack
 
         If current position is in visited:
@@ -171,6 +186,9 @@ Function dfs(start, end, obstacles):
                 Push (neighbor, path + [current]) onto stack
 
         Update the window display
+
+        Wait in pygame for DELAY
+
       # If the loop completes without finding the end node, display a message
     messagebox to show info("DFS", "End node not reachable!")
 
