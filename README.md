@@ -39,6 +39,8 @@ Feel free to contribute, report issues, or suggest improvements! Happy pathfindi
 #Added some error handling
 #Added a slider for visualization delay(slows the visualization process).
 #Added the ability to exit visualization with 'Esc'
+#Changes to colors of Algorithms
+#Added the ability to pause visualization with 'P' (pressing 'p' again will resume the visualization process)
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
 Limitations: This project uses grid based map tile for pathfinding algorithms to work on which may or may not limit the algorithm's capabilities.(I may change the map tile versions in the future)
