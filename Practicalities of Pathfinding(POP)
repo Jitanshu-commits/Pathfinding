@@ -1,23 +1,30 @@
 Dijkstra's algorithm, A* algorithm, Depth-First Search (DFS), and Breadth-First Search (BFS) are all algorithms commonly used for pathfinding in various applications. Here's a brief overview of each, along with their differences and practicalities:
 
+
 Dijkstra's Algorithm:
 
 Dijkstra's algorithm is a greedy algorithm used to find the shortest path from a starting node to all other nodes in a weighted graph.
 It explores all possible paths from the source node outward, visiting nodes in order of their distance from the source.
 It guarantees finding the shortest path in non-negative weighted graphs.
 Dijkstra's algorithm is optimal for finding shortest paths when the graph has uniform edge costs or when all edge costs are non-negative.
+
+
 A Algorithm*:
 
 A* is a heuristic search algorithm used for finding the shortest path from a start node to a goal node in a weighted graph.
 It uses a heuristic function to estimate the cost from the current node to the goal, allowing it to make more informed decisions about which paths to explore first.
 A* combines the advantages of both uniform cost search (like Dijkstra's) and greedy best-first search by considering both the actual cost of the path from the start node and the estimated cost to the goal.
 A* is often more efficient than Dijkstra's algorithm in terms of computational resources since it utilizes heuristic information to guide its search.
+
+
 Depth-First Search (DFS):
 
 DFS is an algorithm that traverses or searches tree or graph data structures, exploring as far as possible along each branch before backtracking.
 In pathfinding, DFS doesn't guarantee finding the shortest path; it merely finds any path from the start node to the goal node.
 DFS is implemented using a stack data structure (or recursion) to keep track of nodes to visit.
 DFS can be memory efficient compared to BFS, but it may get stuck in infinite loops in graphs with cycles.
+
+
 Breadth-First Search (BFS):
 
 BFS is another graph traversal algorithm that systematically explores all neighbor nodes at the present depth before moving on to the nodes at the next depth level.
@@ -36,12 +43,15 @@ The choice of algorithm depends on factors such as graph structure, presence of 
 **Capabilities:**
 Each pathfinding algorithm has its own strengths depending on the specific characteristics of the graph and the requirements of the problem at hand:
 
+
 Dijkstra's Algorithm:
 
 Strengths:
 Finds the shortest path from a single source node to all other nodes in a weighted graph.
 Guarantees optimality when all edge weights are non-negative.
 Suitable for finding shortest paths in scenarios where all possible paths need to be considered.
+
+
 A Algorithm*:
 
 Strengths:
@@ -49,6 +59,8 @@ More efficient than Dijkstra's algorithm when a good heuristic is available.
 Utilizes heuristic information to guide the search process, allowing it to focus on the most promising paths.
 Can be tailored to specific problem domains by choosing appropriate heuristic functions.
 Effective in situations where computational resources are limited and finding the optimal path quickly is essential.
+
+
 Depth-First Search (DFS):
 
 Strengths:
@@ -56,6 +68,8 @@ Simple to implement and understand.
 Memory efficient, as it explores as far as possible along each branch before backtracking.
 Suitable for tasks where any path from the start node to the goal node is acceptable, rather than necessarily the shortest path.
 Can be used for graph traversal and various other applications beyond pathfinding.
+
+
 Breadth-First Search (BFS):
 
 Strengths:
@@ -69,21 +83,28 @@ Each algorithm has its niche and can be advantageous in different scenarios.
 **Limitations:**
 While each pathfinding algorithm has its strengths, they also come with certain weaknesses and limitations:
 
+
 Dijkstra's Algorithm:
 
 Weaknesses:
 Inefficient for large graphs or graphs with many edges, as it explores all possible paths from the source node.
 Requires non-negative edge weights, as it assumes the shortest path between nodes based on cumulative edge weights.
+
+
 A Algorithm*:
 
 Weaknesses:
 Requires a good heuristic function to be effective. Inaccurate or poorly chosen heuristics can lead to suboptimal paths or even performance degradation.
 May not always find the optimal solution if the heuristic is not admissible (i.e., it overestimates the cost to reach the goal).
+
+
 Depth-First Search (DFS):
 
 Weaknesses:
 Does not guarantee finding the shortest path. It may traverse long paths and get stuck in infinite loops, particularly in graphs with cycles.
 Not suitable for finding the shortest path in weighted graphs, as it does not consider edge weights.
+
+
 Breadth-First Search (BFS):
 
 Weaknesses:
