@@ -21,6 +21,8 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 GRAY = (128, 128, 128)
+PURPLE = (128, 0, 128)
+ORANGE = (255, 165, 0)
 
 GRID_SIZE = 20  #sets the actual range of the algorithms on a grid 
 CELL_SIZE = 30
@@ -87,7 +89,11 @@ def dijkstra(start, end, obstacles):
                 return
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                paused = not paused    
 
+         if paused:
+            continue
     
         (cost, current, path) = heapq.heappop(heap)     # Pop the minimum cost node from the heap
 
@@ -130,7 +136,12 @@ def astar(start, end, obstacles):
                 return
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 return
-                
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                paused = not paused    
+
+         if paused:
+            continue
+
         (cost, current, path) = heapq.heappop(heap)
 
         if current in visited:
