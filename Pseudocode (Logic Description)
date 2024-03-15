@@ -87,6 +87,10 @@ Function dijkstra(start, end, obstacles):
               Return
             Else if the event type is KEYDOWN and the key pressed is ESCAPE:
               Return
+            If the event type is KEYDOWN and the key pressed is P:
+              Toggle the value of the paused variable.  
+        If paused is True:
+           Continue to the next iteration of the loop.
 
         Pop the element with the smallest cost, current position, and path from heap
 
