@@ -196,7 +196,7 @@ def dfs(start, end, obstacles):
 
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
-            draw_cell(BLUE, current)
+            draw_cell(ORANGE, current)
             # Adjust the delay for visited cells
             pygame.time.wait(DELAY_VISITED)
 
@@ -246,7 +246,7 @@ def bfs(start, end, obstacles):
 
         visited.add(current)
         if current not in (start, end) and current not in obstacles:
-            draw_cell(BLUE, current)
+            draw_cell(PURPLE, current)
             # Adjust the delay for visited cells
             pygame.time.wait(DELAY_VISITED)
 
