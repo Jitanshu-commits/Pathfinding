@@ -21,6 +21,8 @@ GREEN = (0, 255, 0)  # RGB values for green color
 BLUE = (0, 0, 255)  # RGB values for blue color
 YELLOW = (255, 255, 0)  # RGB values for yellow color
 GRAY = (128, 128, 128)  # RGB values for gray color
+PURPLE = (128, 0, 128)  # RGB values for purple color
+ORANGE = (255, 165, 0)  # RGB values for orange color
 
 
 GRID_SIZE = 20  # Number of cells in each row/column of the grid
@@ -88,7 +90,8 @@ Function dijkstra(start, end, obstacles):
             Else if the event type is KEYDOWN and the key pressed is ESCAPE:
               Return
             If the event type is KEYDOWN and the key pressed is P:
-              Toggle the value of the paused variable.  
+              Toggle the value of the paused variable.
+
         If paused is True:
            Continue to the next iteration of the loop.
 
@@ -130,6 +133,11 @@ Function astar(start, end, obstacles):
                   Return
                 Else if the event type is KEYDOWN and the key pressed is ESCAPE:
                   Return
+                If the event type is KEYDOWN and the key pressed is P:
+                  Toggle the value of the paused variable.
+
+        If paused is True:
+           Continue to the next iteration of the loop.
 
         Pop the element with the smallest cost, current position, and path from heap
 
@@ -169,6 +177,11 @@ Function dfs(start, end, obstacles):
                   Return
                 Else if the event type is KEYDOWN and the key pressed is ESCAPE:
                   Return
+                If the event type is KEYDOWN and the key pressed is P:
+                  Toggle the value of the paused variable.
+
+        If paused is True:
+           Continue to the next iteration of the loop.
 
         Pop the element with current position and path from stack
 
@@ -210,6 +223,11 @@ Function bfs(start, end, obstacles):
                   Return
                 Else if the event type is KEYDOWN and the key pressed is ESCAPE:
                   Return
+                If the event type is KEYDOWN and the key pressed is P:
+                  Toggle the value of the paused variable.
+
+        If paused is True:
+           Continue to the next iteration of the loop.
 
         Dequeue the element with current position and path from queue
 
