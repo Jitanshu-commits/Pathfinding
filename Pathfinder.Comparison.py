@@ -172,7 +172,7 @@ def astar(start, end, obstacles):
 # DFS algorithm
 def dfs(start, end, obstacles):
     # Depth-First Search algorithm for finding a path on a grid
-    stack = [(start, [])]
+    stack = [(start,[])]
     visited = set()
 
     while stack:
@@ -183,6 +183,11 @@ def dfs(start, end, obstacles):
                 return
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                paused = not paused
+                
+        if paused:
+            continue
                 
         current, path = stack.pop()
 
@@ -228,7 +233,12 @@ def bfs(start, end, obstacles):
                 return
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 return
-                
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                paused = not paused    
+
+        if paused:
+            continue
+
         current, path = queue.popleft()
 
         if current in visited:
