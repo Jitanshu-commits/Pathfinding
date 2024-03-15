@@ -1,4 +1,4 @@
-# Import Statements                            Updates Pending                          
+# Import Statements                                                    
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -267,6 +267,7 @@ def bfs(start, end, obstacles):
      # If the loop completes without finding the end node, display a message
     messagebox.showinfo("BFS", "End node not reachable!")
 
+
 # Heuristic function for A*
 def heuristic(point, goal):     
     return abs(point[0] - goal[0]) + abs(point[1] - goal[1])                                                                       
@@ -290,7 +291,8 @@ def neighbors(cell):
     if y < GRID_SIZE - 1:
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
-    
+
+
 # Function to remove an obstacle from the grid
 def remove_obstacle(cell, obstacles):
     if cell in obstacles:
@@ -331,7 +333,8 @@ def generate_random_maze(obstacles):
                 if cell not in (START, END):
                     obstacles.add(cell)
                     draw_cell(GRAY, cell)
-                    
+
+
 # Function to create menu using tkinter
 def create_menu():
     root = tk.Tk()
@@ -361,6 +364,7 @@ def create_menu():
     tk.Button(root, text="DFS", command=lambda: select_algorithm(DFS)).pack()
 
     root.mainloop() # Start the tkinter event loop
+
 
 # Function to run the selected algorithm
 def run_algorithm(selected_algorithm, create_maze):
@@ -463,3 +467,4 @@ if __name__ == "__main__":
     main()
 #Fixed object removal
 #Added a slider for visualization delay
+#Added ability to pause with 'P'
