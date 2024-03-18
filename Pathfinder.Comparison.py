@@ -1,4 +1,4 @@
-# Import Statements                            Updates Pending                                   
+# Import Statements                            
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -76,7 +76,9 @@ def draw_cell(color, position):
         )
         # Draws a colored cell on the Pygame window at the specified position
         pygame.draw.rect(screen, elevated_color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
-        
+        # Add the modified cell to the set
+    modified_cells.add(position)
+    
 # Function to visualize the path with a delay
 def visualize_path(path, color):
     # Visualizes the path on the Pygame window with a delay for better visualization
