@@ -55,11 +55,18 @@ def draw_grid():
         pygame.draw.line(screen, WHITE, (0, y), (SCREEN_SIZE[0], y))
     pygame.display.flip()  # Update the display
 
-# Function to draw a colored cell at a specific position
+# Function to draw a colored cell at a specific position with elevation effect
 def draw_cell(color, position):
-    # Draws a colored cell on the Pygame window at the specified position
-    pygame.draw.rect(screen, color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
-
+    # Check if the cell color is yellow (indicating it belongs to the path)
+    if color == YELLOW or color == RED or color == GRAY:
+        # If the cell color is yellow, draw the cell without applying the darkness effect
+        pygame.draw.rect(screen, color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+    else:
+        # Calculate distance from bottom-right corner
+        distance_x = GRID_SIZE - 1 - position[0]
+        distance_y = GRID_SIZE - 1 - position[1]
+        max_distance = max(distance_x, distance_y)  # Maximum possible distance
+        
 # Function to visualize the path with a delay
 def visualize_path(path, color):
     # Visualizes the path on the Pygame window with a delay for better visualization
