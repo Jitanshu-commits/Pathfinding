@@ -66,6 +66,16 @@ def draw_cell(color, position):
         distance_x = GRID_SIZE - 1 - position[0]
         distance_y = GRID_SIZE - 1 - position[1]
         max_distance = max(distance_x, distance_y)  # Maximum possible distance
+        # Calculate darkness factor based on distance
+        darkness_factor = (max_distance / (GRID_SIZE - 1)) ** 2  # Adjust as desired, e.g., using a power function
+        # Darken the color based on darkness factor
+        elevated_color = (
+            int(color[0] * (1 - darkness_factor)),
+            int(color[1] * (1 - darkness_factor)),
+            int(color[2] * (1 - darkness_factor))
+        )
+        # Draws a colored cell on the Pygame window at the specified position
+        pygame.draw.rect(screen, elevated_color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
         
 # Function to visualize the path with a delay
 def visualize_path(path, color):
