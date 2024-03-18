@@ -56,11 +56,7 @@ Function draw_grid():
     For each y-coordinate from 0 to SCREEN_SIZE[1] with step CELL_SIZE:
         Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
-# Function to draw a colored cell at a specific position
-Function draw_cell(color, position):
-    Draw a rectangle on the window with specified color at position[0] * CELL_SIZE, position[1] * CELL_SIZE
-    # Add the modified cell to the set
-    modified_cells.add(position)
+
 
 # Function to visualize the path with a delay
 Function visualize_path(path, color):
