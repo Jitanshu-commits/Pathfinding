@@ -56,7 +56,14 @@ Function draw_grid():
     For each y-coordinate from 0 to SCREEN_SIZE[1] with step CELL_SIZE:
         Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
-
+Function draw_cell with parameters color and position:
+    If color is YELLOW, RED, or GRAY:
+        Draw the cell without applying darkness effect
+    Else:
+        Calculate distance from bottom-right corner (distance_x, distance_y)
+        Calculate max_distance as maximum of distance_x and distance_y
+        Calculate darkness_factor as (max_distance / (GRID_SIZE - 1))^2
+        Calculate elevated_color by darkening the original color based on darkness_factor
 
 # Function to visualize the path with a delay
 Function visualize_path(path, color):
