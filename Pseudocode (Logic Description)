@@ -1,4 +1,4 @@
-# Import necessary libraries                   Updates Pending                             
+# Import necessary libraries                   
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -56,6 +56,7 @@ Function draw_grid():
     For each y-coordinate from 0 to SCREEN_SIZE[1] with step CELL_SIZE:
         Draw a line on the window with color WHITE from (0, y) to (SCREEN_SIZE[0], y)
 
+# Function to draw a colored cell at a specific position with elevation effect
 Function draw_cell with parameters color and position:
     If color is YELLOW, RED, or GRAY:
         Draw the cell without applying darkness effect
