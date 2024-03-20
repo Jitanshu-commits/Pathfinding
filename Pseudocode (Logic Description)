@@ -65,6 +65,15 @@ Function draw_cell with parameters color and position:
         Calculate darkness_factor as (max_distance / (GRID_SIZE - 1))^2
         Calculate elevated_color by darkening the original color based on darkness_factor
 
+         # Draw the cell on the Pygame window at the specified position with elevated_color
+        Draw a rectangle on the Pygame window:
+            - Position: (position[0] * CELL_SIZE, position[1] * CELL_SIZE)
+            - Size: (CELL_SIZE, CELL_SIZE)
+            - Color: elevated_color
+        
+    # Add the modified cell position to the set modified_cells
+    Add position to modified_cells
+
 # Function to visualize the path with a delay
 Function visualize_path(path, color):
     For each cell in path:
