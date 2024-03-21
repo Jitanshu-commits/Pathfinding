@@ -92,7 +92,12 @@ def draw_cell(color, position):
                 int(current_color[1] * (1 - t) + elevated_color[1] * t),
                 int(current_color[2] * (1 - t) + elevated_color[2] * t)
             )
-        # Add the modified cell to the set
+            # Draw the cell with interpolated color
+            pygame.draw.rect(screen, interpolated_color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+            pygame.display.flip()  # Update display for each frame
+            pygame.time.wait(10)  # Adjust frame delay as needed
+            
+    # Add the modified cell to the set
     modified_cells.add(position)
     
 # Function to visualize the path with a delay
