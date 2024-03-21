@@ -73,6 +73,13 @@ Function draw_cell with parameters color and position:
             - Position: (position[0] * CELL_SIZE, position[1] * CELL_SIZE)
             - Size: (CELL_SIZE, CELL_SIZE)
             - Color: elevated_color
+
+         # Get the current color of the cell if it's already modified
+         Get the current color of the cell:
+            - X-coordinate: position[0] * CELL_SIZE + CELL_SIZE // 2
+            - Y-coordinate: position[1] * CELL_SIZE + CELL_SIZE // 2
+
+         # Interpolate between the current color and the elevated color for smooth transition
         Set transition_frames to the number of frames for transition (e.g., 10)
         Loop from 0 to transition_frames:
              Calculate interpolation factor t as i divided by transition_frames
