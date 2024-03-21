@@ -1,11 +1,13 @@
-# Import Statements                            
+# Import Statements                            #Major updates pending
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
-from collections import deque  # For implementing the queue in BFS
 import tkinter as tk  # For creating GUI for algorithm selection
+import numpy as np #For performing mathematical operations
+from collections import deque  # For implementing the queue in BFS
 from tkinter import messagebox  # For displaying message boxes in tkinter GUI
 from tkinter import Scale  # For adding the slider
+from PIL import Image  # Import PIL library for image manipulation
 
 # Constants for algorithm selection
 ASTAR = 1
@@ -76,6 +78,20 @@ def draw_cell(color, position):
         )
         # Draws a colored cell on the Pygame window at the specified position
         pygame.draw.rect(screen, elevated_color, (position[0] * CELL_SIZE, position[1] * CELL_SIZE, CELL_SIZE, CELL_SIZE))
+        # Get the current color of the cell if it's already modified
+        current_color = screen.get_at((position[0] * CELL_SIZE + CELL_SIZE // 2, position[1] * CELL_SIZE + CELL_SIZE // 2))
+        
+        # Interpolate between the current color and the elevated color for smooth transition
+        transition_frames = 10  # Number of frames for transition
+        for i in range(transition_frames + 1):
+            # Calculate interpolation factor
+            t = i / transition_frames
+            # Interpolate color components
+            interpolated_color = (
+                int(current_color[0] * (1 - t) + elevated_color[0] * t),
+                int(current_color[1] * (1 - t) + elevated_color[1] * t),
+                int(current_color[2] * (1 - t) + elevated_color[2] * t)
+            )
         # Add the modified cell to the set
     modified_cells.add(position)
     
