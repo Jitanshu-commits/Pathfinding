@@ -1,4 +1,4 @@
-# Import necessary libraries                   
+# Import necessary libraries                   #Major Updates Pending
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -73,6 +73,13 @@ Function draw_cell with parameters color and position:
             - Position: (position[0] * CELL_SIZE, position[1] * CELL_SIZE)
             - Size: (CELL_SIZE, CELL_SIZE)
             - Color: elevated_color
+        Set transition_frames to the number of frames for transition (e.g., 10)
+        Loop from 0 to transition_frames:
+             Calculate interpolation factor t as i divided by transition_frames
+             Interpolate color components:
+            - Interpolated red component: current_color[0] * (1 - t) + elevated_color[0] * t
+            - Interpolated green component: current_color[1] * (1 - t) + elevated_color[1] * t
+            - Interpolated blue component: current_color[2] * (1 - t) + elevated_color[2] * t
         
     # Add the modified cell position to the set modified_cells
     Add position to modified_cells
