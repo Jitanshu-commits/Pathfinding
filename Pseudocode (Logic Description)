@@ -2,10 +2,12 @@
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
-from collections import deque  # Import deque from collections for implementing the queue in BFS
 import tkinter as tk  # Import tkinter as tk for creating GUI for algorithm selection
+import numpy as np # import numpy as np for numerical operations
+from collections import deque  # Import deque from collections for implementing the queue in BFS
 from tkinter import messagebox  # Import messagebox from tkinter for displaying message boxes in tkinter GUI
 from tkinter import Scale  # For adding the slider
+from PIL import Image  # Import PIL library for image manipulation
 
 # Constants for algorithm selection
 ASTAR = 1
