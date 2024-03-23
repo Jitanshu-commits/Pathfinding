@@ -1,4 +1,4 @@
-# Import Statements                            #Major updates pending
+# Import Statements                            
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -26,8 +26,8 @@ GRAY = (128, 128, 128)
 PURPLE = (128, 0, 128)
 ORANGE = (255, 165, 0)
 
-GRID_SIZE = 20  #sets the actual range of the algorithms on a grid 
-CELL_SIZE = 30
+GRID_SIZE = 30  #sets the actual range of the algorithms on a grid 
+CELL_SIZE = 20
 SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
 
 # Define Start and End (Grid Range) for algorithms to work on.
@@ -135,7 +135,7 @@ def dijkstra(start, end, obstacles):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 paused = not paused    
 
-         if paused:
+        if paused:
             continue
     
         (cost, current, path) = heapq.heappop(heap)     # Pop the minimum cost node from the heap
@@ -184,7 +184,7 @@ def astar(start, end, obstacles):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 paused = not paused    
 
-         if paused:
+        if paused:
             continue
 
         (cost, current, path) = heapq.heappop(heap)
@@ -316,7 +316,6 @@ def bfs(start, end, obstacles):
      # If the loop completes without finding the end node, display a message
     messagebox.showinfo("BFS", "End node not reachable!")
 
-
 # Heuristic function for A*
 def heuristic(point, goal):     
     return abs(point[0] - goal[0]) + abs(point[1] - goal[1])                                                                       
@@ -340,7 +339,6 @@ def neighbors(cell):
     if y < GRID_SIZE - 1:
         valid_neighbors.append((x, y + 1))
     return valid_neighbors
-
 
 # Function to remove an obstacle from the grid
 def remove_obstacle(cell, obstacles):
@@ -372,7 +370,6 @@ def remove_obstacle(cell, obstacles):
         
         pygame.display.flip()  # Update the display
 
-
 # Function to generate a random maze with obstacles
 def generate_random_maze(obstacles):
     for i in range(GRID_SIZE):
@@ -382,7 +379,6 @@ def generate_random_maze(obstacles):
                 if cell not in (START, END):
                     obstacles.add(cell)
                     draw_cell(GRAY, cell)
-
 
 # Function to create menu using tkinter
 def create_menu():
@@ -432,16 +428,22 @@ def create_menu():
 
     root.mainloop() # Start the tkinter event loop
 
-
 # Function to run the selected algorithm
 def run_algorithm(selected_algorithm, create_maze):
     reset()
-
     obstacles = set()
 
     if create_maze:
         generate_random_maze(obstacles)  # Generate maze before setting start and end points
 #Main(engine) code
+    algorithm_name = {
+        ASTAR: "A* Algorithm",
+        DIJKSTRA: "Dijkstra's Algorithm",
+        BFS: "BFS Algorithm",
+        DFS: "DFS Algorithm"
+    }
+    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
+    
     running = True
     start_set = False
     end_set = False
@@ -487,25 +489,36 @@ def run_algorithm(selected_algorithm, create_maze):
                     reset()
                 elif event.key == pygame.K_ESCAPE:
                     create_menu()  # Show the algorithm selection menu
+                    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
                 elif event.key == pygame.K_1:  # Shortcut for A*
                     selected_algorithm = ASTAR
+                    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
                 elif event.key == pygame.K_2:  # Shortcut for Dijkstra's
                     selected_algorithm = DIJKSTRA
+                    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
                 elif event.key == pygame.K_3:  # Shortcut for BFS
                     selected_algorithm = BFS
+                    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
                 elif event.key == pygame.K_4:  # Shortcut for DFS
-                    selected_algorithm = DFS                        
+                    selected_algorithm = DFS
+                    pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
             elif event.type == pygame.MOUSEBUTTONDOWN:   # Handle mouse button down events   
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
                 if pygame.mouse.get_pressed()[0]:  # Left mouse button
                     if not start_set:  # If start is not set, set start position
                         start = cell_pos
-                        draw_cell(RED, start)
+                        #draw_cell(RED, start)
+                        image = pygame.image.load("STARTEND.png").convert_alpha()
+                        image = pygame.transform.scale(image, (CELL_SIZE, CELL_SIZE))
+                        screen.blit(image, (start[0] * CELL_SIZE, start[1] * CELL_SIZE))
                         start_set = True
                     elif not end_set and cell_pos != start:  # If end is not set and the clicked position is not the same as start, set end position
                         end = cell_pos
-                        draw_cell(RED, end)
+                        #draw_cell(RED, end)
+                        image = pygame.image.load("STARTEND.png").convert_alpha()
+                        image = pygame.transform.scale(image, (CELL_SIZE, CELL_SIZE))
+                        screen.blit(image, (end[0] * CELL_SIZE, end[1] * CELL_SIZE))
                         end_set = True
                     else:
                         # Mark the cell as an obstacle
@@ -529,9 +542,6 @@ def run_algorithm(selected_algorithm, create_maze):
 
 def main():
     create_menu()
-
+    
 if __name__ == "__main__":
     main()
-#Fixed object removal
-#Added a slider for visualization delay
-#Added ability to pause with 'P'
