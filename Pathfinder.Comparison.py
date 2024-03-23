@@ -400,11 +400,29 @@ def create_menu():
     delay_slider.set(DELAY)  # Set default value
     delay_slider.pack()
 
+    # Checkbox for smooth transitions
+    smooth_var = tk.IntVar()
+    smooth_checkbox = tk.Checkbutton(root, text="Smooth Transitions", variable=smooth_var)
+    smooth_checkbox.pack()
+
     def select_algorithm(algorithm):
-        global DELAY
+        global DELAY, DELAY_VISITED
         DELAY = delay_slider.get()  # Update the delay value
+        DELAY_VISITED = 0 if smooth_var.get() == 0 else 10  # Set DELAY_VISITED based on smooth_var
         root.destroy()  # Close the menu
         run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
+        
+        # Update Pygame window caption to show selected algorithm
+        algorithm_name = {
+            ASTAR: "A* Algorithm",
+            DIJKSTRA: "Dijkstra's Algorithm",
+            BFS: "BFS Algorithm",
+            DFS: "DFS Algorithm"
+        }
+        pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[algorithm]}")
+        # Process pending events to ensure the window caption updates immediately
+        pygame.event.get()
+        
     # Add labels and buttons for each algorithm option
     tk.Label(root, text="Select Algorithm:").pack()
     tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
