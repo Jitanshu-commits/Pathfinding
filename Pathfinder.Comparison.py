@@ -45,7 +45,7 @@ modified_cells = set()
 
 # Default delay for visualization
 DELAY = 50
-DELAY_VISITED= 10
+DELAY_VISITED= 0
 
 # Function to draw the grid
 def draw_grid():
@@ -107,19 +107,22 @@ def visualize_path(path, color):
         draw_cell(color, cell)
         pygame.display.flip()
         pygame.time.wait(DELAY)      #User can change wait time to 0 for the real comparison of time taken by each Algorithm.
-
+        
 # Reset the screen, draw the grid, and update the display
 def reset():
     # Resets the Pygame window by filling it with black color and redrawing the grid
     screen.fill(BLACK)
     draw_grid()
-    pygame.display.flip()
+    # Clear the set of modified cells
+    modified_cells.clear()
 
 # Dijkstra's algorithm
 def dijkstra(start, end, obstacles):
+    global DELAY_VISITED
     # Dijkstra's algorithm for finding the shortest path on a grid
     heap = [(0, start, [])]
     visited = set()
+    paused = False
 
     while heap:
         # Update the UI periodically
@@ -164,9 +167,11 @@ def dijkstra(start, end, obstacles):
 
 # A* algorithm
 def astar(start, end, obstacles):
+    global DELAY_VISITED
     # A* algorithm for finding the shortest path on a grid
     heap = [(0, start, [])]
     visited = set()
+    paused = False
 
     while heap:
          # Update the UI periodically
@@ -211,9 +216,11 @@ def astar(start, end, obstacles):
     
 # DFS algorithm
 def dfs(start, end, obstacles):
+    global DELAY_VISITED
     # Depth-First Search algorithm for finding a path on a grid
     stack = [(start,[])]
     visited = set()
+    paused = False
 
     while stack:
         # Update the UI periodically
@@ -261,9 +268,11 @@ def dfs(start, end, obstacles):
     
 # BFS algorithm
 def bfs(start, end, obstacles):
+    global DELAY_VISITED
     # Breadth-First Search algorithm for finding the shortest path on a grid
     queue = deque([(start, [])])
     visited = set()
+    paused = False
 
     while queue:
          # Update the UI periodically
