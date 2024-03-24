@@ -117,6 +117,7 @@ Function reset():
 Function dijkstra(start, end, obstacles):
     Create an empty priority queue heap with initial element (0, start, [])
     Create an empty set visited
+    Set paused to False
 
     While heap is not empty:
         Loop through each event in pygame.event.get():
@@ -161,6 +162,7 @@ Function dijkstra(start, end, obstacles):
 Function astar(start, end, obstacles):
     Create an empty priority queue heap with initial element (0, start, [])
     Create an empty set visited
+    Set paused to False
 
     While heap is not empty:
         Loop through each event in pygame.event.get():
@@ -205,6 +207,7 @@ Function astar(start, end, obstacles):
 Function dfs(start, end, obstacles):
     Create an empty stack with initial element (start, [])
     Create an empty set visited
+    Set paused to False
 
     While stack is not empty:
         Loop through each event in pygame.event.get():
@@ -251,6 +254,7 @@ Function dfs(start, end, obstacles):
 Function bfs(start, end, obstacles):
     Create an empty queue with initial element (start, [])
     Create an empty set visited
+    Set paused to False
 
     While queue is not empty:
         Loop through each event in pygame.event.get():
@@ -395,6 +399,16 @@ Function run_algorithm(selected_algorithm, create_maze):
     obstacles = set()
     if create_maze is selected:
         generate_random_maze(obstacles)
+    # Create a dictionary mapping algorithm constants to their names
+    algorithm_name = {
+      ASTAR: "A* Algorithm",
+      DIJKSTRA: "Dijkstra's Algorithm",
+      BFS: "BFS Algorithm",
+      DFS: "DFS Algorithm"
+    }
+
+# Set the caption for the Pygame display window
+    Set the window caption to "Pathfinding Visualization - " concatenated with the name of the selected algorithm from algorithm_name.
 
     Set running to true
     Set start_set to false
