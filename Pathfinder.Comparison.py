@@ -407,18 +407,7 @@ def create_menu():
         DELAY_VISITED = 0 if smooth_var.get() == 0 else 10  # Set DELAY_VISITED based on smooth_var
         root.destroy()  # Close the menu
         run_algorithm(algorithm, maze_var.get()) # Run the selected algorithm, pass maze_var value
-        
-        # Update Pygame window caption to show selected algorithm
-        algorithm_name = {
-            ASTAR: "A* Algorithm",
-            DIJKSTRA: "Dijkstra's Algorithm",
-            BFS: "BFS Algorithm",
-            DFS: "DFS Algorithm"
-        }
-        pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[algorithm]}")
-        # Process pending events to ensure the window caption updates immediately
-        pygame.event.get()
-        
+                
     # Add labels and buttons for each algorithm option
     tk.Label(root, text="Select Algorithm:").pack()
     tk.Button(root, text="A*", command=lambda: select_algorithm(ASTAR)).pack()
@@ -435,15 +424,16 @@ def run_algorithm(selected_algorithm, create_maze):
 
     if create_maze:
         generate_random_maze(obstacles)  # Generate maze before setting start and end points
-#Main(engine) code
+        
+    # A dictionary for algorithm name(key pairs)
     algorithm_name = {
         ASTAR: "A* Algorithm",
         DIJKSTRA: "Dijkstra's Algorithm",
         BFS: "BFS Algorithm",
         DFS: "DFS Algorithm"
-    }
+    } # Update Pygame window caption to show selected algorithm
     pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
-    
+    #Main loop(engine) of the code
     running = True
     start_set = False
     end_set = False
