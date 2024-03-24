@@ -1,4 +1,4 @@
-# Import necessary libraries                   #Major Updates Pending
+# Import necessary libraries                   
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -480,7 +480,11 @@ Function run_algorithm(selected_algorithm, create_maze):
                     Set start_set to true
                 Else if end_set is false and cell_pos is not equal to start:
                     Set end to cell_pos
-                    Call draw_cell with color RED and end
+                    #Call draw_cell with color RED and end
+                    Load the image "STARTEND.png" with alpha channel transparency.
+                    Convert the image to the appropriate format for display.
+                    Resize the image to match the cell size (CELL_SIZE, CELL_SIZE).
+                    Draw the image on the Pygame window at the position of the end cell.
                     Set end_set to true
                 Else:
                     Add cell_pos to obstacles
