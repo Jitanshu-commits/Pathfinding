@@ -9,9 +9,13 @@ Let's dive deeper into the functionality of each function:
 
 1. `draw_grid()`: This foundational function sets up the visual representation of the grid system within the Pygame window.
 It meticulously iterates through the dimensions of the screen, meticulously crafting the grid pattern by drawing horizontal and vertical lines, ensuring a clear and structured layout.
+Role: Sets up the visual representation of the grid system within the Pygame window.
+Implementation: Iterates through the dimensions of the screen and draws horizontal and vertical lines to create a structured grid pattern.
 
 2. `draw_cell(color, position)`: A critical function in the visualization process, `draw_cell()` brings individual cells to life within the grid.
 Given parameters for color and position, it utilizes Pygame's drawing capabilities to create a rectangular representation of the cell, ensuring each cell is distinctly identifiable with its specified color at the designated position.
+Role: Draws an individual cell with a specified color at a given position within the grid.
+Implementation: Utilizes Pygame's drawing capabilities to create a rectangular representation of the cell, ensuring it stands out with the designated color at the specified position.
 
 3. `draw_cell_smooth(color, position)`: This function is an enhanced version of draw_cell() with smooth transitions.
 It calculates the darkness factor based on the distance from the bottom-right corner and darkens the color accordingly to create an elevation effect. 
