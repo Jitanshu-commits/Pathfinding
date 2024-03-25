@@ -13,6 +13,10 @@ It meticulously iterates through the dimensions of the screen, meticulously craf
 2. `draw_cell(color, position)`: A critical function in the visualization process, `draw_cell()` brings individual cells to life within the grid.
 Given parameters for color and position, it utilizes Pygame's drawing capabilities to create a rectangular representation of the cell, ensuring each cell is distinctly identifiable with its specified color at the designated position.
 
+3. `draw_cell_smooth(color, position)`: This function is an enhanced version of draw_cell() with smooth transitions.
+It calculates the darkness factor based on the distance from the bottom-right corner and darkens the color accordingly to create an elevation effect. 
+Additionally, it implements smooth transitions by interpolating between the current color and the elevated color over a series of frames.
+
 3. `visualize_path(path, color)`: This function adds an extra layer of insight into the algorithm's decision-making process by visually representing the path taken.
 It meticulously traverses through each cell in the provided path, dynamically highlighting them with the specified color, offering users a real-time glimpse into the algorithm's progression.
 
