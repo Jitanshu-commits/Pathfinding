@@ -17,21 +17,31 @@ Given parameters for color and position, it utilizes Pygame's drawing capabiliti
 Role: Draws an individual cell with a specified color at a given position within the grid.
 Implementation: Utilizes Pygame's drawing capabilities to create a rectangular representation of the cell, ensuring it stands out with the designated color at the specified position.
 
-3. `draw_cell_smooth(color, position)`: This function is an enhanced version of draw_cell() with smooth transitions.
+#. `draw_cell_smooth(color, position)`: This function is an enhanced version of draw_cell() with smooth transitions.
 It calculates the darkness factor based on the distance from the bottom-right corner and darkens the color accordingly to create an elevation effect. 
 Additionally, it implements smooth transitions by interpolating between the current color and the elevated color over a series of frames.
+Role: Enhances the visual representation of individual cells by incorporating smooth transitions and an elevation effect, providing a more immersive and aesthetically pleasing experience.
+Implementation: Calculates the darkness factor based on the distance from the bottom-right corner of the grid, creating an elevation effect where cells closer to the corner appear darker.
 
 3. `visualize_path(path, color)`: This function adds an extra layer of insight into the algorithm's decision-making process by visually representing the path taken.
 It meticulously traverses through each cell in the provided path, dynamically highlighting them with the specified color, offering users a real-time glimpse into the algorithm's progression.
+Role: Provides a visual representation of the path taken by highlighting cells in the specified color.
+Implementation: Iterates through each cell in the provided path and highlights them with the specified color, offering real-time insight into the algorithm's progress.
 
 4. `reset()`: Serving as the reset mechanism, `reset()` ensures a clean slate for each algorithm execution. By filling the Pygame window with a black color and redrawing the grid, 
 it wipes away any remnants of previous visualizations, priming the environment for a fresh algorithm run or visualization.
+Role: Resets the Pygame window, clearing any previous visualizations to prepare for a new algorithm run.
+Implementation: Fills the Pygame window with a black color and redraws the grid, effectively wiping away any remnants of previous visualizations.
 
 5. `dijkstra(start, end, obstacles)`: At the heart of this function lies the implementation of Dijkstra's algorithm,
 meticulously navigating the grid to uncover the shortest path from the start to the end node. Leveraging a priority queue, it meticulously selects the next node to explore, ensuring an optimal path discovery process.
+Role: Implements Dijkstra's algorithm to find the shortest path from the start to the end node.
+Implementation: Utilizes a priority queue to explore nodes, ensuring the discovery of the optimal path while considering edge weights.
 
 6. `astar(start, end, obstacles)`: With a fusion of Dijkstra's algorithm and heuristic estimation, `astar()` undertakes the challenge of finding the shortest path on the grid.
 By employing a priority queue based on the sum of current cost and heuristic, it efficiently navigates the grid while factoring in the estimated distance to the goal.
+Role: Implements the A* algorithm to find the shortest path while considering both the cost incurred and heuristic estimate to the goal.
+Implementation: Utilizes a priority queue based on the sum of current cost and heuristic, ensuring an efficient exploration of the grid.
 
 7. `dfs(start, end, obstacles)`: This function embarks on a journey through the grid using Depth-First Search (DFS). It bravely traverses as far as possible along each branch,
 backtracking only when faced with a dead-end, ultimately discovering the end node or exhaustively exploring all feasible paths.
