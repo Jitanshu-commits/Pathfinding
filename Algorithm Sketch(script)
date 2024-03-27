@@ -65,12 +65,18 @@ Implementation: Considers adjacent cells in the four cardinal directions, ensuri
 
 11. `remove_obstacle(cell, obstacles)`: When obstacles need to be vanquished from the grid, this function steps up to the challenge.
 It orchestrates the removal of the obstacle from the set of obstacles, meticulously clearing the cell by redrawing it with a black color, and meticulously updating the surrounding grid lines to conceal the erstwhile obstacle.
+Role: Removes an obstacle from the grid and updates the visualization accordingly.
+Implementation: Clears the obstacle from the set of obstacles, redraws the cell with a black color, and updates surrounding grid lines to conceal the removed obstacle.
 
 12. `generate_random_maze(obstacles)`: Infusing a dash of unpredictability into the grid, this function breathes life into a maze with obstacles.
 It meticulously traverses each cell in the grid, making calculated random decisions on whether to add an obstacle, ultimately sculpting a maze-like structure that puts the algorithms to the test.
+Role: Generates a random maze with obstacles to provide varying challenges for the algorithms.
+Implementation: Traverses each cell in the grid and randomly decides whether to add an obstacle, creating a maze-like structure that tests the algorithms' capabilities.
 
 13. `create_menu()`: This function serves as the gateway to user interaction, crafting a visually appealing menu interface using Tkinter.
 It empowers users to choose their preferred algorithm and fine-tune visualization settings, providing a seamless and intuitive means to interact with the program.
+Role: Constructs a graphical menu interface using Tkinter for users to interact with the program.
+Implementation: Provides options for selecting algorithms, setting visualization settings, and controlling the execution flow, enhancing user engagement and experience.
 
 14. `run_algorithm(selected_algorithm, create_maze)`: As the conductor orchestrating the symphony of algorithms,
 this function takes charge of executing the selected algorithm. It adeptly manages user inputs, sets the stage for algorithmic exploration, and navigates the execution process, ensuring a fluid and immersive user experience.
