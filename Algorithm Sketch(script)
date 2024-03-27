@@ -45,15 +45,23 @@ Implementation: Utilizes a priority queue based on the sum of current cost and h
 
 7. `dfs(start, end, obstacles)`: This function embarks on a journey through the grid using Depth-First Search (DFS). It bravely traverses as far as possible along each branch,
 backtracking only when faced with a dead-end, ultimately discovering the end node or exhaustively exploring all feasible paths.
+Role: Conducts Depth-First Search (DFS) to explore the grid, backtracking when necessary to uncover feasible paths.
+Implementation: Utilizes a stack to traverse as far as possible along each branch, exploring unvisited nodes until reaching the end or exhausting all options.
 
 8. `bfs(start, end, obstacles)`: Embodying the essence of Breadth-First Search (BFS), this function systematically explores the grid level by level,
 emanating from the start node. Its steadfast approach guarantees the discovery of the shortest path upon reaching the end node, making it an ideal candidate for optimal solutions.
+Role: Performs Breadth-First Search (BFS) to systematically explore the grid level by level, ensuring the discovery of the shortest path.
+Implementation: Utilizes a queue to explore neighboring nodes level by level, guaranteeing the shortest path upon reaching the end node.
 
 9. `heuristic(point, goal)`: As the backbone of A* algorithm's guidance system, this function calculates a heuristic value critical for navigating towards the goal node. 
 Through the meticulous computation of the Manhattan distance between the current point and the goal, it provides a valuable estimate of the remaining distance to the goal.
+Role: Computes a heuristic estimate to guide the A* algorithm towards the goal node efficiently.
+Implementation: Calculates the Manhattan distance between the current point and the goal, providing an estimate of the remaining distance to the goal.
 
 10. `neighbors(cell)`: Acting as the gatekeeper to the grid, `neighbors()` identifies the valid neighboring cells for a given cell.
 By meticulously considering adjacent cells in the four cardinal directions, it ensures the algorithm's exploration remains confined within the boundaries of the grid.
+Role: Identifies valid neighboring cells for a given cell within the grid.
+Implementation: Considers adjacent cells in the four cardinal directions, ensuring the exploration remains within the grid boundaries.
 
 11. `remove_obstacle(cell, obstacles)`: When obstacles need to be vanquished from the grid, this function steps up to the challenge.
 It orchestrates the removal of the obstacle from the set of obstacles, meticulously clearing the cell by redrawing it with a black color, and meticulously updating the surrounding grid lines to conceal the erstwhile obstacle.
