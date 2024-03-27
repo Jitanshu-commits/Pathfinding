@@ -1,6 +1,8 @@
 #Taking major hits in algorithm performance, turns out adding more functions to algorithms slows the visiting process of cells (overall taking longer to find a path),
 turning the algorithms to classes may help me reduce loops (make it efficient). I might do that to compare performance in future updates .
 
+# This Code is error free!
+
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
 (Additions- BFS ,DFS)
 draw_grid(): This function is responsible for drawing the grid lines on the Pygame window. It iterates over the screen size and draws horizontal and vertical lines to create a grid.
@@ -80,13 +82,15 @@ Implementation: Provides options for selecting algorithms, setting visualization
 
 14. `run_algorithm(selected_algorithm, create_maze)`: As the conductor orchestrating the symphony of algorithms,
 this function takes charge of executing the selected algorithm. It adeptly manages user inputs, sets the stage for algorithmic exploration, and navigates the execution process, ensuring a fluid and immersive user experience.
+Role: Executes the selected algorithm based on user inputs and manages the algorithmic exploration process.
+Implementation: Orchestrates the execution of the chosen algorithm, handles user interactions, and ensures a seamless and immersive user experience throughout the exploration.
 
 15. `main()`: Serving as the cornerstone of the program's architecture, `main()` lays the foundation for user interaction.
 By initializing the menu interface through `create_menu()`, it ignites the spark of user engagement, inviting them to embark on a journey of algorithmic exploration and visualization on the grid.
+Role: Acts as the entry point for the program, initializing the menu interface and facilitating user interaction.
+Implementation: Invokes the create_menu() function to start the program, prompting users to select algorithms and interact with the grid for algorithmic exploration and visualization.
 
 Learned a new word "meticulous" recently
 Note: Make sure to have the Pygame library installed (pip install pygame) before running this script.
 PS: I plan on adding new algos and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
 (I want a new GUI pls help)
-
-
