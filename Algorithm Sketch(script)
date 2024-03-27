@@ -5,7 +5,9 @@ turning the algorithms to classes may help me reduce loops (make it efficient). 
 
 This Python script uses the Pygame library to visualize and compare Dijkstra's algorithm and A* algorithm for pathfinding in a grid-based environment. Here's a breakdown of the code:
 (Additions- BFS ,DFS)
-draw_grid(): This function is responsible for drawing the grid lines on the Pygame window. It iterates over the screen size and draws horizontal and vertical lines to create a grid.
+Program uses Pygame to visualize pathfinding algorithms on a grid. It sets up the grid, draws cells, and visualizes paths.
+Algorithms like Dijkstra's, A*, DFS, and BFS are implemented. Users can interactively set start and end points, add obstacles, and run algorithms through a user-friendly menu interface.
+It's a fun way to explore and understand different pathfinding strategies!
 
 Let's dive deeper into the functionality of each function:
 
@@ -94,3 +96,5 @@ Learned a new word "meticulous" recently
 Note: Make sure to have the Pygame library installed (pip install pygame) before running this script.
 PS: I plan on adding new algos and some new functions(maze generation, grid resizing etc) that may change or make my previous codes/descs obsolete.
 (I want a new GUI pls help)
+
+# This code is all about jazzing up individual cells with colors.  🖌️🎨
