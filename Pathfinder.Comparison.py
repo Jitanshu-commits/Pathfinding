@@ -425,6 +425,14 @@ def create_menu():
 
     root.mainloop() # Start the tkinter event loop
 
+def resize_cell_size(value):
+    global CELL_SIZE
+    CELL_SIZE = int(value)
+    draw_grid()  # Redraw the grid with the new cell size
+
+def main():
+    create_menu()
+
 # Function to run the selected algorithm
 def run_algorithm(selected_algorithm, create_maze):
     reset()
