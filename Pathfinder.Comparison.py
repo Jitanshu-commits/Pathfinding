@@ -1,4 +1,4 @@
-# Import Statements                            # Updates Pending
+# Import Statements                           
 import random  # For shuffling neighbors in DFS
 import pygame  # For graphical visualization
 import heapq  # For priority queue implementation in Dijkstra's and A*
@@ -508,6 +508,20 @@ def run_algorithm(selected_algorithm, create_maze):
                 elif event.key == pygame.K_4:  # Shortcut for DFS
                     selected_algorithm = DFS
                     pygame.display.set_caption(f"Pathfinding Visualization - {algorithm_name[selected_algorithm]}")
+                elif event.key == pygame.K_m:
+                    generate_random_maze(obstacles)
+                elif event.key == pygame.K_s:
+                    pygame.image.save(screen, "maze.png")
+                    img = Image.open("maze.png")
+                    img.show()
+                elif event.key == pygame.K_EQUALS or event.key == pygame.K_PLUS:
+                    DELAY = max(0, DELAY - 10)
+                elif event.key == pygame.K_MINUS:
+                    DELAY += 10
+                elif event.key == pygame.K_0:
+                    DELAY_VISITED = max(0, DELAY_VISITED - 10)
+                elif event.key == pygame.K_9:
+                    DELAY_VISITED += 10        
             elif event.type == pygame.MOUSEBUTTONDOWN:   # Handle mouse button down events   
                 pos = pygame.mouse.get_pos()
                 cell_pos = (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
