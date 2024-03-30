@@ -26,9 +26,9 @@ GRAY = (128, 128, 128)
 PURPLE = (128, 0, 128)
 ORANGE = (255, 165, 0)
 
-GRID_SIZE = 30  #sets the actual range of the algorithms on a grid 
+GRID_SIZE = 100  #sets the actual range of the algorithms on a grid 
 CELL_SIZE = 20
-SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)
+SCREEN_SIZE = (800,600)   #800,600 or 1278,660
 
 # Define Start and End (Grid Range) for algorithms to work on.
 START = (0, 0)
@@ -400,6 +400,14 @@ def create_menu():
     smooth_var = tk.IntVar()
     smooth_checkbox = tk.Checkbutton(root, text="Smooth Transitions", variable=smooth_var)
     smooth_checkbox.pack()
+    
+     # Adding slider for cell size
+    cell_size_label = tk.Label(root, text="Cell Size:")
+    cell_size_label.pack()
+    cell_size_slider = Scale(root, from_=20, to=50, orient=tk.HORIZONTAL, length=200, command=resize_cell_size)
+    cell_size_slider.set(CELL_SIZE)  # Set default value
+    cell_size_slider.pack()
+
 
     def select_algorithm(algorithm):
         global DELAY, DELAY_VISITED
