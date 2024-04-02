@@ -475,6 +475,19 @@ Function run_algorithm(selected_algorithm, create_maze):
                     selected_algorithm = BFS
                Else If event.key is equal to pygame.K_4:  # Shortcut for DFS
                     selected_algorithm = DFS
+               If the pressed key is M:
+                    Generate a random maze using the obstacles parameter.
+              Else if the pressed key is S:
+                  Save the current screen as "maze.png" and display it using an external image viewer.
+              Else if the pressed key is EQUALS or PLUS:
+                  Increase the value of DELAY by 10.
+              Else if the pressed key is MINUS:
+                  Decrease the value of DELAY by 10, ensuring it doesn't go below 0.
+              Else if the pressed key is 0:
+                  Decrease the value of DELAY_VISITED by 10, ensuring it doesn't go below 0.
+              Else if the pressed key is 9:
+                  Increase the value of DELAY_VISITED by 10.
+
  
             Else if event type is MOUSEBUTTONDOWN:
                 Set pos to pygame.mouse.get_pos()
