@@ -27,9 +27,9 @@ PURPLE = (128, 0, 128)  # RGB values for purple color
 ORANGE = (255, 165, 0)  # RGB values for orange color
 
 
-GRID_SIZE = 20  # Number of cells in each row/column of the grid
-CELL_SIZE = 30  # Size of each cell in pixels
-SCREEN_SIZE = (GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE)  # Size of the Pygame window
+GRID_SIZE = 100  # Number of cells in each row/column of the grid
+CELL_SIZE = 20  # Size of each cell in pixels
+SCREEN_SIZE = (800,600)   #800,600 or 1278,660 ,Size of the Pygame window
 
 # Define Start and End (Grid Range) for algorithms to work on.
 START = (0, 0)
@@ -379,6 +379,13 @@ Function create_menu():
     Set the length of the slider to 200 pixels
     Set the initial value of the slider to a default value defined by the variable DELAY
     Display the slider widge
+
+    
+    Display a label indicating "Cell Size"
+    Create a slider widget named cell_size_slider
+    Set the range of the slider from 20 to 50
+    Set the orientation of the slider to horizontal
+
 
     Function select_algorithm with parameter algorithm:
        Set global variable DELAY to the current value of delay_slider
