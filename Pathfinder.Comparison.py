@@ -515,9 +515,9 @@ def run_algorithm(selected_algorithm, create_maze):
                     img = Image.open("maze.png")
                     img.show()
                 elif event.key == pygame.K_EQUALS or event.key == pygame.K_PLUS:
-                    DELAY = max(0, DELAY - 10)
-                elif event.key == pygame.K_MINUS:
                     DELAY += 10
+                elif event.key == pygame.K_MINUS:
+                    DELAY = max(0, DELAY - 10)
                 elif event.key == pygame.K_0:
                     DELAY_VISITED = max(0, DELAY_VISITED - 10)
                 elif event.key == pygame.K_9:
