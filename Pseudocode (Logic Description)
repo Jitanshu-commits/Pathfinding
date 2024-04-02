@@ -1,4 +1,4 @@
-# Import necessary libraries                      # Updates Pending
+# Import necessary libraries                     
 import random  # Import the random module for shuffling neighbors in DFS
 import pygame  # Import the pygame library for graphical visualization
 import heapq  # Import the heapq module for priority queue implementation in Dijkstra's and A*
@@ -477,18 +477,17 @@ Function run_algorithm(selected_algorithm, create_maze):
                     selected_algorithm = DFS
                If the pressed key is M:
                     Generate a random maze using the obstacles parameter.
-              Else if the pressed key is S:
-                  Save the current screen as "maze.png" and display it using an external image viewer.
-              Else if the pressed key is EQUALS or PLUS:
-                  Increase the value of DELAY by 10.
-              Else if the pressed key is MINUS:
-                  Decrease the value of DELAY by 10, ensuring it doesn't go below 0.
-              Else if the pressed key is 0:
-                  Decrease the value of DELAY_VISITED by 10, ensuring it doesn't go below 0.
-              Else if the pressed key is 9:
-                  Increase the value of DELAY_VISITED by 10.
+               Else if the pressed key is S:
+                    Save the current screen as "maze.png" and display it using an external image viewer.
+               Else if the pressed key is EQUALS or PLUS:
+                    Increase the value of DELAY by 10.
+               Else if the pressed key is MINUS:
+                    Decrease the value of DELAY by 10, ensuring it doesn't go below 0.
+               Else if the pressed key is 0:
+                    Decrease the value of DELAY_VISITED by 10, ensuring it doesn't go below 0.
+               Else if the pressed key is 9:
+                    Increase the value of DELAY_VISITED by 10.
 
- 
             Else if event type is MOUSEBUTTONDOWN:
                 Set pos to pygame.mouse.get_pos()
                 Set cell_pos to (pos[0] // CELL_SIZE, pos[1] // CELL_SIZE)
