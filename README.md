@@ -43,7 +43,7 @@ Feel free to contribute, report issues, or suggest improvements! Happy pathfindi
 #Added the ability to pause visualization with 'P' (pressing 'p' again will resume the visualization process)
 #Graphical enhancements for Visualization process
 #Ability to resize Grid with a slider
-#New hotkeys to save the visualization process by pressing 's', '+' to increase speed, '-' to decrease speed and 'm'to generate maze.
+#New hotkeys to save the visualization process by pressing 's', '+' to increase speed, '-' to decrease speed and 'm'to generate maze('0' and '9' affects delay speed for smooth transitions).
 PS: I made alot of similar programs/codes(that don't work/ are bad) feel free to ping me for my previous codes(this is the most polished version of my code and it works! :) 
 Thanks!
 Limitations: This project uses grid based map tile for pathfinding algorithms to work on which may or may not limit the algorithm's capabilities.(I may change the map tile versions in the future)
